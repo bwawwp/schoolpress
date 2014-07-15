@@ -1,0 +1,129 @@
+# Translation of the WordPress plugin   by .
+# Copyright (C) 2010 
+# This file is distributed under the same license as the  package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wordpress-beta-tester\n"
+"POT-Creation-Date: 2010-05-09 09:31+0000\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: wp-beta-tester.php:28
+#, php-format
+msgid ""
+"<strong>Error:</strong> Your current <a href=\"%1$s\">WordPress Beta Tester "
+"plugin configuration</a> will downgrade your install to a previous version - "
+"Please reconfigure it."
+msgstr ""
+
+#: wp-beta-tester.php:38 wp-beta-tester.php:161
+msgid "Beta Testing WordPress"
+msgstr ""
+
+#: wp-beta-tester.php:38
+msgid "Beta Testing"
+msgstr ""
+
+#: wp-beta-tester.php:155
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: wp-beta-tester.php:163
+msgid ""
+"<strong>Please note:</strong> Once you have switched your blog to one of "
+"these beta versions of software it will not always be possible to downgrade "
+"as the database structure maybe updated during the development of a major "
+"release."
+msgstr ""
+
+#: wp-beta-tester.php:167
+msgid ""
+"<strong>Please note:</strong> There are no development builds of the beta "
+"stream you have choosen available so you will receieve normal update "
+"notifications."
+msgstr ""
+
+#: wp-beta-tester.php:172
+#, php-format
+msgid ""
+"By their nature these releases are unstable and should not be used anyplace "
+"where your data is important. So please <a href=\"%1$s\">backup your "
+"database</a> before upgrading to a test release. In order to hear about the "
+"latest beta releases your best bet is to watch the <a href=\"%2$s"
+"\">development blog</a> and the <a href=\"%3$s\">beta forum</a>"
+msgstr ""
+
+#: wp-beta-tester.php:173
+msgctxt "Url to database backup instructions"
+msgid "http://codex.wordpress.org/Backing_Up_Your_Database"
+msgstr ""
+
+#: wp-beta-tester.php:174
+msgctxt "Url to development blog"
+msgid "http://wordpress.org/development/"
+msgstr ""
+
+#: wp-beta-tester.php:175
+msgctxt "Url to beta support forum"
+msgid "http://wordpress.org/support/forum/12"
+msgstr ""
+
+#: wp-beta-tester.php:176
+#, php-format
+msgid ""
+"Thank you for helping in testing WordPress please <a href=\"%s\">report any "
+"bugs you find</a>."
+msgstr ""
+
+#: wp-beta-tester.php:177
+msgctxt "Url to raise a new trac ticket"
+msgid "http://core.trac.wordpress.org/newticket"
+msgstr ""
+
+#: wp-beta-tester.php:179
+msgid ""
+"By default your WordPress install uses the stable update stream, to return "
+"to this please deactivate this plugin"
+msgstr ""
+
+#: wp-beta-tester.php:181
+msgid "Please select the update stream you would like this blog to use:"
+msgstr ""
+
+#: wp-beta-tester.php:189
+msgid "Point release nightlies"
+msgstr ""
+
+#: wp-beta-tester.php:190
+msgid ""
+"This contains the work that is occuring on a branch in preperation for a x.x."
+"x point release.  This should also be fairly stable but will be available "
+"before the branch is ready for beta."
+msgstr ""
+
+#: wp-beta-tester.php:195
+msgid "Bleeding edge nightlies"
+msgstr ""
+
+#: wp-beta-tester.php:196
+msgid ""
+"This is the bleeding edge development code which may be unstable at times. "
+"<em>Only use this if you really know what you are doing</em>."
+msgstr ""
+
+#: wp-beta-tester.php:201
+msgid "Save Changes"
+msgstr ""
+
+#: wp-beta-tester.php:203
+#, php-format
+msgid "Why don't you <a href=\"%s\">head on over and upgrade now</a>."
+msgstr ""

@@ -1,0 +1,90 @@
+/*
+THEME NAME: SchoolPress
+THEME URI: http://schoolpress.me
+DESCRIPTION: SchoolPress - a StartBox Child Theme
+VERSION: 0.1
+AUTHOR: Kim Coleman
+AUTHOR Uri: http://strangerstudios.com
+TAGS: startbox, child, tag
+TEMPLATE: startbox
+*/
+@import url("../startbox/style.css");
+
+body {font-family: 'Open Sans', sans-serif; background: #108a93; color: #555; }
+h1, h2, h3, h4, h5 {font-family: 'Open Sans', sans-serif; font-weight: 300; }
+h1.page-title {padding: 0 0 20px 0; border-bottom: 1px solid #DEDEDE; margin: 50px 0 40px 0; }
+a {color: #108a93; }
+a:hover {color: #35b2bb; }
+
+#wrap, #footer_wrap {
+	width: 100%; 
+}
+
+#header, #container, .layout-two-col-right div#container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+	float: none;
+}
+
+#header_wrap, #footer_wrap {background: #108a93; }
+#header_wrap {border-bottom: 1px solid #EEE; }
+#footer_wrap {border-top: 1px solid #EEE; }
+#container_wrap {background: #FFF; padding-bottom: 50px; }
+
+#logo {margin: 35px 0 25px 0; }
+#logo #site-title a {color: #FFF; font-size: 60px; font-family: 'Sanchez', 'Garamond', serif; }
+#logo #site-title a:hover {text-decoration: none; }
+.nav-sb_header {clear: none; border: none; margin: 0 auto; height: auto; font-weight: 300; float: right; text-align: right; width: auto; padding: 35px 0; }
+.nav li a, .nav li a:visited {color: #FFF; text-decoration: none; font-size: 28px; padding: 0; margin: 0 30px; }
+.nav li:hover a, .nav li:hover a:visited, .nav li a:hover, .nav li a:active, .nav li a:focus, .nav li.current-menu-item a, .nav li.current-menu-item a:visited, .nav li.current-menu-ancestor a, .nav li.current-menu-ancestor a:visited {color: #FFF; border-color: #FFF; }
+
+.page-login .nav, .page-lostpassword .nav {display: none; }
+
+#footer, #footer a {color: #FFF; }
+
+.divider {margin: 30px 0; }
+.alt_wrap {background: #FAFAFA; padding: 50px 0; border-top: 1px solid #FFF; border-bottom: 1px solid #FFF;}
+.alt2_wrap {background: #563d7c; padding: 50px 0; border-top: 1px solid #FFF; color: #FFF; }
+.wrap {padding: 50px 0; border-top: 1px solid #EEE; border-bottom: 1px solid #EEE; }
+
+/* Homepage Styles */
+.home {text-align: center; }
+.home #container {width: 100%; }
+.home #container_wrap {padding: 0; }
+.home h2 {font-family: 'Sanchez', 'Garamond', serif; color: #563d7c; font-size: 32px; margin: 0 0 30px 0;}
+.home .alt2_wrap h2 {color: #FFF; }
+.home .alt2_wrap .pmpro_btn {color: #FFF; }
+
+.home .container .column {text-align: left; position: relative;}
+.home .container p {font-size: 22px; line-height: 30px; font-weight: 300; margin: 0;  }
+.home .container .column p {padding: 0 5% 0 25%;}
+.home .container .fa  {font-size: 70px; color: #999; position: absolute; top: 0; left: 0; }
+
+.page-login #container, .page-lostpassword #container, .page-resetpass #container {width: 40%; margin: 0 auto; }
+.login {padding: 0; }
+.entry-content .tml-action-links{padding-left:0; margin: 0 0 30px 0;list-style:none}.entry-content .tml-action-links>li{display:inline-block;padding-right:10px;}
+.entry-content .login p.message {background-color: #fcf8e3;color: #8a6d3b;margin: .5em 0;padding: 10px 15px;font-size: 14px;font-weight: 400;line-height: 1.5em;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;border: 1px solid #faebcc;}
+
+/* Paid Memberships Pro Styles */
+.pmpro_btn, .pmpro_btn:link, .login input[type=submit] {background: #563d7c; color: #FFF; font-weight: 400; border: none; padding: 6px 12px; border-radius: 4px; font-size: 14px; line-height: 1.42857143; }
+.pmpro_btn:hover, .login input[type=submit]:hover {background: #522990;  }
+
+.pmpro-levels .page {text-align: center; }
+.pmpro-levels h1.page-title { }
+.pmpro_level {text-align: center; }
+.pmpro_level h2 {color: #563d7c; font-size: 40px; font-weight: 300; }
+.pmpro_level .pmpro_btn {display: block; margin: 0 25%; }
+
+@media (min-width:768px){
+	#header, #container, .layout-two-col-right div#container, #footer {width: 750px; }
+}
+
+@media (min-width:992px){
+	#header, #container, .layout-two-col-right div#container, #footer {width: 960px; }
+}
+
+@media (min-width:1200px){
+	#header, #container, .layout-two-col-right div#container, #footer {width: 1170px; }
+}

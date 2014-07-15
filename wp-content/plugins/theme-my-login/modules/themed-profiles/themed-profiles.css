@@ -1,0 +1,78 @@
+#your-profile label,
+#your-profile label + a {
+	vertical-align: middle;
+}
+
+#your-profile fieldset {
+	border: 0 none;
+	margin: 0;
+	padding: 0;
+}
+
+#your-profile label {
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+}
+
+#your-profile .form-table {
+	border-collapse: collapse;
+}
+
+#your-profile .form-table th {
+	padding: 10px;
+	text-align: left;
+	vertical-align: top;
+	width: 150px;
+}
+
+#your-profile .form-table td {
+	font-size: 11px;
+	line-height: 20px;
+	margin-bottom: 9px;
+	padding: 8px 10px;
+}
+
+#your-profile .form-table div.color-option {
+	display: block;
+	clear: both;
+	margin-top: 12px;
+}
+
+#your-profile .form-table input {
+	margin: 1px;
+	padding: 3px;
+	line-height: 15px;
+}
+
+#your-profile .form-table input.tog {
+	margin-top: 2px;
+	margin-right: 2px;
+	float: left;
+}
+
+#your-profile .form-table .color-palette {
+	vertical-align: bottom;
+	float: left;
+	margin: -12px 3px 11px;
+	width: auto;
+	border: none;
+}
+
+#your-profile .form-table .color-palette td {
+	border-width: 1px 1px 0;
+	border-style: solid solid none;
+	border-color: #fff;
+	height: 10px;
+	line-height: 20px;
+	width: 10px;
+}
+
+#your-profile .form-table input[type="checkbox"],
+#your-profile .form-table input[type="radio"] {
+    vertical-align: middle;
+}
+
+#pass-strength-result {
+	float: left;
+}

@@ -1,0 +1,74 @@
+.login {
+	padding: 5px;
+}
+.login p.error {
+	padding: 5px;
+	border: 1px solid #c00;
+	background-color: #ffebe8;
+	color: #333;
+}
+.login p.message {
+	padding: 5px;
+	border: 1px solid #e6db55;
+	background-color: #ffffe0;
+	color: #333;
+}
+.login form label {
+	display: block;
+}
+.login form p.forgetmenot label {
+	display: inline;
+}
+.login input {
+	margin: 5px 0;
+}
+.profile .screen-reader-text,
+.profile .screen-reader-text span {
+	height: 1px;
+	left: -1000em;
+	overflow: hidden;
+	position: absolute;
+	width: 1px;
+}
+.mu_register .hint {
+	font-size: 12px;
+	margin-bottom: 10px;
+	display: block;
+}
+.mu_register label.checkbox {
+	display: inline;
+}
+#pass-strength-result {
+    border-style: solid;
+    border-width: 1px;
+    margin: 12px 5px 5px 1px;
+    padding: 3px 5px;
+    text-align: center;
+    width: 200px;
+}
+#pass-strength-result.strong,
+#pass-strength-result.short {
+    font-weight: bold;
+}
+#pass-strength-result {
+    background-color: #eee;
+    border-color: #ddd !important;
+}
+
+#pass-strength-result.bad {
+    background-color: #ffb78c;
+    border-color: #ff853c !important;
+}
+
+#pass-strength-result.good {
+    background-color: #ffec8b;
+    border-color: #fc0 !important;
+}
+#pass-strength-result.short {
+    background-color: #ffa0a0;
+    border-color: #f04040 !important;
+}
+#pass-strength-result.strong {
+    background-color: #c3ff88;
+    border-color: #8dff1c !important;
+}

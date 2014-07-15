@@ -1,0 +1,106 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Beta Testing WordPress\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wordpress-beta-tester\n"
+"POT-Creation-Date: 2009-11-05 21:32+0000\n"
+"PO-Revision-Date: 2009-11-21 23:32+0200\n"
+"Last-Translator: Stas SUSHKOV <stas@softwareliber.ro>\n"
+"Language-Team: WordPress Romania <hello@softwareliber.ro>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
+"X-Poedit-Language: Romanian\n"
+"X-Poedit-Country: ROMANIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+
+#: wp-beta-tester.php:27
+#: wp-beta-tester.php:128
+msgid "Beta Testing WordPress"
+msgstr "Beta testare WordPress"
+
+#: wp-beta-tester.php:27
+msgid "Beta Testing"
+msgstr "Beta testare"
+
+#: wp-beta-tester.php:122
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Nu aveți permisiunile necesare pentru a accesa această pagină."
+
+#: wp-beta-tester.php:130
+msgid "<strong>Please note:</strong> Once you have switched your blog to one of these beta versions of software it will not always be possible to downgrade as the database structure maybe updated during the development of a major release."
+msgstr "<strong>Atenție:</strong> Odată setată folosirea uneia dintre versiunile beta disponibile nu tot timpul va fi posibilă revenirea din cauza modificărilor structurale aduse bazei de date în timpul dezvoltării versiunilor majore."
+
+#: wp-beta-tester.php:134
+msgid "<strong>Please note:</strong> There are no development builds of the beta stream you have choosen available so you will receieve normal update notifications."
+msgstr "<strong>Atenție:</strong> Nu există compilări a dezvoltărilor beta disponibile ce au fost setate la preferințe, din această cauză notificările primite vor conține actualizări ordinare."
+
+#: wp-beta-tester.php:138
+#, php-format
+msgid "By their nature these releases are unstable and should not be used anyplace where your data is important. So please <a href=\"%1$s\">backup your database</a> before upgrading to a test release. In order to hear about the latest beta releases your best bet is to watch the <a href=\"%2$s\">development blog</a> and the <a href=\"%3$s\">beta forum</a>"
+msgstr "După felul lor aceste versiuni sunt instabile și nu se recomandă a fi folosite oriunde datele reprezintă importanță. Din acest motiv <a href=\"%1$s\">creați copii de rezervă</a> înainte de a începe folosirea unei versiuni beta. Pentru a afla despre ultimele lansări beta cea mai scurtă cale ar fi <a href=\"%2$s\">blogul dezvoltatorilor</a> și <a href=\"%3$s\">forumul celor ce testează</a>."
+
+#: wp-beta-tester.php:139
+msgctxt "Url to database backup instructions"
+msgid "http://codex.wordpress.org/Backing_Up_Your_Database"
+msgstr "http://codex.wordpress.org/Backing_Up_Your_Database"
+
+#: wp-beta-tester.php:140
+msgctxt "Url to development blog"
+msgid "http://wordpress.org/development/"
+msgstr "http://wordpress.org/development/"
+
+#: wp-beta-tester.php:141
+msgctxt "Url to beta support forum"
+msgid "http://wordpress.org/support/forum/12"
+msgstr "http://wordpress.org/support/forum/12"
+
+#: wp-beta-tester.php:142
+#, php-format
+msgid "Thank you for helping in testing WordPress please <a href=\"%s\">report any bugs you find</a>."
+msgstr "Mulțumim pentru ajutorul acordat în testarea WordPress, <a href=\"%s\">raportarea erorilor găsite</a> este binevenită."
+
+#: wp-beta-tester.php:143
+msgctxt "Url to raise a new trac ticket"
+msgid "http://core.trac.wordpress.org/newticket"
+msgstr "http://core.trac.wordpress.org/newticket"
+
+#: wp-beta-tester.php:145
+msgid "By default your WordPress install uses the stable update stream, to return to this please deactivate this plugin"
+msgstr "Implicit, instanța WordPress folosită folosește actualizările destinate lansărilor stabile, pentru a reveni la aceste setări, dezactivați modulul."
+
+#: wp-beta-tester.php:147
+msgid "Please select the update stream you would like this blog to use:"
+msgstr "Selectați tipul de actualizări care o să fie folosit:"
+
+#: wp-beta-tester.php:155
+msgid "Point release nightlies"
+msgstr "Compilări orientate spre lansări"
+
+#: wp-beta-tester.php:156
+msgid "This contains the work that is occuring on a branch in preperation for a x.x.x point release.  This should also be fairly stable but will be available before the branch is ready for beta."
+msgstr "Acestea conțin actualizările orientate pentru lansări a versiunilor de tipul x.x.x. De asemenea acestea ar trebui să fie mult mai stabile, însă sunt disponibile înaintea lansării ramurei drept beta."
+
+#: wp-beta-tester.php:161
+msgid "Bleeding edge nightlies"
+msgstr "Compilări cu actualizările cele mai recente"
+
+#: wp-beta-tester.php:162
+msgid "This is the bleeding edge development code which may be unstable at times. <em>Only use this if you really know what you are doing</em>."
+msgstr "Acestea conțin cod cu modificări foarte recente care nu este neapărat stabil. <em>Folosiți aceste actualizări doar dacă știți ce faceți</em>."
+
+#: wp-beta-tester.php:167
+msgid "Save Changes"
+msgstr "Salvează preferințele"
+
+#: wp-beta-tester.php:169
+#, php-format
+msgid "Why don't you <a href=\"%s\">head on over and upgrade now</a>."
+msgstr "Acum <a href=\"%s\">se pot încerca actualizările</a>."
+

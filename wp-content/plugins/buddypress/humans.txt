@@ -1,0 +1,69 @@
+               .$$$$$$$Z$.
+          .~$$7...........$$$.
+        .$$...?$$$$$$$$$$Z....$Z.
+      .Z$..Z$$$$$$$$$$$$$$$$Z:..$$.
+     ,$..$$$$$$$$$$$$$7...$$$$$?..$.
+   .$Z .$$$$$$$$$$..?$$.....$$$$$..Z:
+  .$$.$$$$$$$$$........$$....Z$$$$..Z,
+  :$.7$$$$$$$$..........$$....$$$$$..$.
+ .$. $$$$$$$$$...........$....$$$$$$..$.
+.$$.$$$$$$$$$$...........$...$$$$$$$$.$.
+.$. $$$$$$$$$$ ..........Z..$$$$$$$$$.$$.
+.$.,$$$$$$$$$$$.........$$$$Z$$$$$$$$..$.
+.Z $$$$$$$$$$$$$$....+$$$$$,,,,~$$$$$..$.
+.$.=$$$$$$Z,,,,,?$$$$$,,,,,Z$,,,,$$$$..$.
+.$..$$$$$$,,,,,,,,Z$$,,,,,,,,$:,,~$$$.:$.
+.$$.$$$$$,,,,,,,,,,,,,,,,,,,,:$,,:$$$.Z.
+ .$..$$$$,,,,,,,,,,,,,,,,,,,,:$,,,$$..$.
+ .$$.$$$:,,,,,,,,,,,,,,,,,,,,,Z$$$$+.$.
+  .$= $$~,,,,,,:::,:,,:,,::,:,$$$$Z.$Z.
+   .$+.$$$$$$$$$$$$$$$$$$$$$$$$$$:.$$.
+    .$$..Z$$$$$$$$$$$$$$$$$$$$$Z..$7.
+      .$...$$$$$$$$$$$$$$$$$$$..Z$.
+        .Z$=..?Z$$$$$$$$$$$Z...$$.
+          .$$7.............Z$$.
+             .7Z$$$$$$$$$$~
+
+   We are the humans behind BuddyPress
+
+/* TEAM */
+Name: Andy Peatling
+Title: Founding Developer
+Twitter: apeatling
+
+Name: John James Jacoby
+Title: Project Lead
+Twitter: jjj
+Favorite Food: Truffle Lasagna
+
+Name: Boone B. Gorges
+Title: Lead Developer
+Twitter: boone
+Favorite Pudgy Pie Filling: Cherry
+
+Name: Paul Gibbs
+Title: Lead Developer
+Twitter: pgibbs
+Favourite Food: Pizza
+
+Name: Ray
+Title: Core Developer
+Twitter: r-a-y
+Favourite Food: tbd
+
+Name: Mathieu Viet
+Title: Core Developer
+Twitter: imath
+Favorite Food: Spaghetti Bolognese
+
+Name: Mercime
+Title: Navigator
+Twitter: mercime_one
+Favorite Food: Paella Valenciana
+
+/* THANKS */
+hnla, modemlooper, cnorris23, karmatosed, photomatt
+
+/* META */
+Updated: 2014/04/14
+See: http://humanstxt.org/

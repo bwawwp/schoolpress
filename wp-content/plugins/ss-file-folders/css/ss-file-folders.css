@@ -1,0 +1,6 @@
+table.ss-file-folders {width: 100%;}
+table.ss-file-folders th {text-align: left; background: #EEE;}
+table.ss-file-folders td {text-align: left;}
+table.ss-file-folders td.ss-file-folders_thumb a {display: block; text-align: center; }
+table.ss-file-folders td.ss-file-folders_thumb img {width: 32px; height: auto; }
+a.ssff-file-link {font-size: .9em; color: #CCC;}

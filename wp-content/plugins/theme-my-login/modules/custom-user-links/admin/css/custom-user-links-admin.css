@@ -1,0 +1,30 @@
+#theme_my_login_user_links div.ajax-response {
+	border: none;
+}
+#theme_my_login_user_links table {
+	width: 100%;
+	margin: 0;
+	border-spacing: 0;
+}
+#theme_my_login_user_links table input[type="text"] {
+	width: 95%;
+}
+#theme_my_login_user_links th.left,
+#theme_my_login_user_links td.left {
+	width: 35%;
+}
+#theme_my_login_user_links td.center {
+	text-align: center;
+}
+#theme_my_login_user_links td.submit {
+	border: 0 none;
+	float: none !important;
+	padding: 5px 8px !important;
+	width: 25%;
+}
+#theme_my_login_user_links td.submit input {
+	min-width: 75px;
+}
+#theme_my_login_user_links .alternate {
+	background-color: transparent;
+}

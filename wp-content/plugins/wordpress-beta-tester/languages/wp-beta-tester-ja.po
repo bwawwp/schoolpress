@@ -1,0 +1,152 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WordPress Beta Tester 0.96\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wordpress-beta-tester\n"
+"POT-Creation-Date: 2010-05-09 09:31+0000\n"
+"PO-Revision-Date: 2013-04-13 13:19+0900\n"
+"Last-Translator: Naoko Takano <info@nao-net.com>\n"
+"Language-Team: \n"
+"Language: Japanese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_c\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-SearchPath-0: wordpress-beta-tester\n"
+
+#: wp-beta-tester.php:28
+#, php-format
+msgid ""
+"<strong>Error:</strong> Your current <a href=\"%1$s\">WordPress Beta Tester "
+"plugin configuration</a> will downgrade your install to a previous version - "
+"Please reconfigure it."
+msgstr ""
+"<strong>エラー:</strong> 現在の<a href=\"%1$s\">WordPress ベータテスタープラ"
+"グイン設定</a>によると、以前のバージョンにインストールがダウンロードされま"
+"す。設定を修正してください。"
+
+#: wp-beta-tester.php:38 wp-beta-tester.php:161
+msgid "Beta Testing WordPress"
+msgstr "WordPress のベータテスト"
+
+#: wp-beta-tester.php:38
+msgid "Beta Testing"
+msgstr "ベータテスト"
+
+#: wp-beta-tester.php:155
+msgid "You do not have sufficient permissions to access this page."
+msgstr "このページを表示する権限がありません。"
+
+#: wp-beta-tester.php:163
+msgid ""
+"<strong>Please note:</strong> Once you have switched your blog to one of "
+"these beta versions of software it will not always be possible to downgrade "
+"as the database structure maybe updated during the development of a major "
+"release."
+msgstr ""
+"<strong>注:</strong> メジャーリリースの場合にはデータベースが更新されることが"
+"あります。このため、ブログをベータ版に変更してしまうと下位バージョンにダウン"
+"グレードできない場合もあることに注意してください。"
+
+#: wp-beta-tester.php:167
+msgid ""
+"<strong>Please note:</strong> There are no development builds of the beta "
+"stream you have choosen available so you will receieve normal update "
+"notifications."
+msgstr ""
+"<strong>注:</strong> 選択したベータの系統には利用可能な開発ビルドはありませ"
+"ん。通常の更新通知が表示されます。"
+
+#: wp-beta-tester.php:172
+#, php-format
+msgid ""
+"By their nature these releases are unstable and should not be used anyplace "
+"where your data is important. So please <a href=\"%1$s\">backup your "
+"database</a> before upgrading to a test release. In order to hear about the "
+"latest beta releases your best bet is to watch the <a href=\"%2$s"
+"\">development blog</a> and the <a href=\"%3$s\">beta forum</a>"
+msgstr ""
+"これらのリリースは必然的に不安定なものとなっており、重要なデータを扱うサイト"
+"では使用すべきではありません。テスト用リリースにアップグレードする前に、必ず"
+"<a href=\"%1$s\">データベースをバックアップ</a>してください。最新のベータリ"
+"リースについての情報を得るには、<a href=\"%2$s\">開発ブログ</a>と<a href="
+"\"%3$s\">ベータフォーラム</a>が役に立つでしょう。"
+
+#: wp-beta-tester.php:173
+msgctxt "Url to database backup instructions"
+msgid "http://codex.wordpress.org/Backing_Up_Your_Database"
+msgstr "http://wpdocs.sourceforge.jp/データベースのバックアップ"
+
+#: wp-beta-tester.php:174
+msgctxt "Url to development blog"
+msgid "http://wordpress.org/development/"
+msgstr "http://ja.wordpress.org/#blog"
+
+#: wp-beta-tester.php:175
+msgctxt "Url to beta support forum"
+msgid "http://wordpress.org/support/forum/12"
+msgstr "http://ja.forums.wordpress.org/forum/7"
+
+#: wp-beta-tester.php:176
+#, php-format
+msgid ""
+"Thank you for helping in testing WordPress please <a href=\"%s\">report any "
+"bugs you find</a>."
+msgstr ""
+"WordPress のベータテストにご協力ありがとうございます ! バグを発見した場合は、"
+"<a href=\"%s\">報告してください</a>。"
+
+#: wp-beta-tester.php:177
+msgctxt "Url to raise a new trac ticket"
+msgid "http://core.trac.wordpress.org/newticket"
+msgstr "http://core.trac.wordpress.org/newticket"
+
+#: wp-beta-tester.php:179
+msgid ""
+"By default your WordPress install uses the stable update stream, to return "
+"to this please deactivate this plugin"
+msgstr ""
+"デフォルトでは安定版の系統を使用するようになっています。その状態に戻すにはこ"
+"のプラグインを無効化してください。"
+
+#: wp-beta-tester.php:181
+msgid "Please select the update stream you would like this blog to use:"
+msgstr "このブログで利用したいアップグレードの系統を選択してください。"
+
+#: wp-beta-tester.php:189
+msgid "Point release nightlies"
+msgstr "ポイントリリース・ナイトリー"
+
+#: wp-beta-tester.php:190
+msgid ""
+"This contains the work that is occuring on a branch in preperation for a x.x."
+"x point release.  This should also be fairly stable but will be available "
+"before the branch is ready for beta."
+msgstr ""
+"これにはポイントリリース (バージョン x.x.x) のブランチでの変更が含まれます。"
+"ブランチがベータ版になる前に利用できますが、ある程度安定したバージョンとなる"
+"でしょう。"
+
+#: wp-beta-tester.php:195
+msgid "Bleeding edge nightlies"
+msgstr "最新版ナイトリービルド"
+
+#: wp-beta-tester.php:196
+msgid ""
+"This is the bleeding edge development code which may be unstable at times. "
+"<em>Only use this if you really know what you are doing</em>."
+msgstr ""
+"これは最新版ベータ開発コードで、安定しない場合もあります。<strong>よく理解し"
+"ている場合のみご利用ください。</strong>"
+
+#: wp-beta-tester.php:201
+msgid "Save Changes"
+msgstr "変更を保存"
+
+#: wp-beta-tester.php:203
+#, php-format
+msgid "Why don't you <a href=\"%s\">head on over and upgrade now</a>."
+msgstr "それでは、<a href=\"%s\">ベータ版にアップグレード</a>しましょう !"

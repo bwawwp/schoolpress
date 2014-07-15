@@ -1,0 +1,98 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Beta Tester v1.0 Bosnian\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wordpress-beta-tester\n"
+"POT-Creation-Date: 2009-11-05 21:32+0000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Kenan Dervisevic <kenan3008@gmail.com>\n"
+"Language-Team: Kenan Dervisevic <kenan3008@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Bosnian\n"
+"X-Poedit-Country: BOSNIA AND HERZEGOVINA\n"
+
+#: wp-beta-tester.php:27
+#: wp-beta-tester.php:128
+msgid "Beta Testing WordPress"
+msgstr "Beta testiranje WordPressa"
+
+#: wp-beta-tester.php:27
+msgid "Beta Testing"
+msgstr "Beta testiranje"
+
+#: wp-beta-tester.php:122
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Nemate potrebne privilegije da biste pristupili stranici."
+
+#: wp-beta-tester.php:130
+msgid "<strong>Please note:</strong> Once you have switched your blog to one of these beta versions of software it will not always be possible to downgrade as the database structure maybe updated during the development of a major release."
+msgstr "<strong>Napomena:</strong> Jednom kada nadogradite vaš blog na neku od ovih beta verzija softvera, postoji mogućnost da se nećete moći vratiti na raniju verziju zbog toga što može doći do izmjena u bazi podataka u toku razvoja bitnijih verzija."
+
+#: wp-beta-tester.php:134
+msgid "<strong>Please note:</strong> There are no development builds of the beta stream you have choosen available so you will receieve normal update notifications."
+msgstr "<strong>Napomena:</strong> Nema dostupnih razvojnih verzija za postavke koje ste odabrali pa ćete dobiti obavijesti o običnim nadogradnjama."
+
+#: wp-beta-tester.php:138
+#, php-format
+msgid "By their nature these releases are unstable and should not be used anyplace where your data is important. So please <a href=\"%1$s\">backup your database</a> before upgrading to a test release. In order to hear about the latest beta releases your best bet is to watch the <a href=\"%2$s\">development blog</a> and the <a href=\"%3$s\">beta forum</a>"
+msgstr "Po svojoj prirodi, ove nadogradnje su nestabilne i ne bi se trebale koristiti ondje gdje se nalaze važni podaci. Zato vas molimo da <a href=\"%1$s\">napravite kopiju vaše baze podataka</a> prije nadogradnje na testno izdanje. Da biste saznali novosti o najnovijim beta izdanjima najbolje je da pratite <a href=\"%2$s\">programerski blog</a> i <a href=\"%3$s\">beta forum</a>"
+
+#: wp-beta-tester.php:139
+msgctxt "Url to database backup instructions"
+msgid "http://codex.wordpress.org/Backing_Up_Your_Database"
+msgstr "http://codex.wordpress.org/Backing_Up_Your_Database"
+
+#: wp-beta-tester.php:140
+msgctxt "Url to development blog"
+msgid "http://wordpress.org/development/"
+msgstr "http://wordpress.org/development/"
+
+#: wp-beta-tester.php:141
+msgctxt "Url to beta support forum"
+msgid "http://wordpress.org/support/forum/12"
+msgstr "http://wordpress.org/support/forum/12"
+
+#: wp-beta-tester.php:142
+#, php-format
+msgid "Thank you for helping in testing WordPress please <a href=\"%s\">report any bugs you find</a>."
+msgstr "Zahvaljujemo vam se što testirate WordPress i molimo vas da <a href=\"%s\">prijavite bilo koju grešku koju pronađete</a>."
+
+#: wp-beta-tester.php:143
+msgctxt "Url to raise a new trac ticket"
+msgid "http://core.trac.wordpress.org/newticket"
+msgstr "http://core.trac.wordpress.org/newticket"
+
+#: wp-beta-tester.php:145
+msgid "By default your WordPress install uses the stable update stream, to return to this please deactivate this plugin"
+msgstr "U skladu s početnim postavkama WordPress instalacija koristi stabilne nadogradnje, da biste se vratili na stabilne nadogradnje deaktivirajte ovaj plugin"
+
+#: wp-beta-tester.php:147
+msgid "Please select the update stream you would like this blog to use:"
+msgstr "Molimo vas da odaberete nadogradnje koje želite koristiti na blogu:"
+
+#: wp-beta-tester.php:155
+msgid "Point release nightlies"
+msgstr "Označi noćna izdanja"
+
+#: wp-beta-tester.php:156
+msgid "This contains the work that is occuring on a branch in preperation for a x.x.x point release.  This should also be fairly stable but will be available before the branch is ready for beta."
+msgstr "Sadrži rad koji je priprema za x.x.x izdanje. Stabilnost je prilično mala ali je verzija dostupna prije nego je verzija spremna za betu."
+
+#: wp-beta-tester.php:161
+msgid "Bleeding edge nightlies"
+msgstr "Granična noćna izdanja"
+
+#: wp-beta-tester.php:162
+msgid "This is the bleeding edge development code which may be unstable at times. <em>Only use this if you really know what you are doing</em>."
+msgstr "Ovo je granični razvojni kod koji može biti nestabilan s vremena na vrijeme. <em>Koristite samo ako zaista znate šta radite</em>."
+
+#: wp-beta-tester.php:167
+msgid "Save Changes"
+msgstr "Sačuvaj promjene"
+
+#: wp-beta-tester.php:169
+#, php-format
+msgid "Why don't you <a href=\"%s\">head on over and upgrade now</a>."
+msgstr "Zašto ne biste <a href=\"%s\">nadogradili sada</a>."
+

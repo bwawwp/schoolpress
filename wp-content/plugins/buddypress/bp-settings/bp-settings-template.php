@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * BuddyPress Settings Template Functions
+ *
+ * @package BuddyPress
+ * @subpackage SettingsTemplate
+ */
+
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) exit;
+
+/**
+ * Output the settings component slug
+ *
+ * @package BuddyPress
+ * @subpackage SettingsTemplate
+ * @since BuddyPress (1.5)
+ *
+ * @uses bp_get_settings_slug()
+ */
+function bp_settings_slug() {
+	echo bp_get_settings_slug();
+}
+	/**
+	 * Return the settings component slug
+	 *
+	 * @package BuddyPress
+	 * @subpackage SettingsTemplate
+	 * @since BuddyPress (1.5)
+	 */
+	function bp_get_settings_slug() {
+		return apply_filters( 'bp_get_settings_slug', buddypress()->settings->slug );
+	}
+
+/**
+ * Output the settings component root slug
+ *
+ * @package BuddyPress
+ * @subpackage SettingsTemplate
+ * @since BuddyPress (1.5)
+ *
+ * @uses bp_get_settings_root_slug()
+ */
+function bp_settings_root_slug() {
+	echo bp_get_settings_root_slug();
+}
+	/**
+	 * Return the settings component root slug
+	 *
+	 * @package BuddyPress
+	 * @subpackage SettingsTemplate
+	 * @since BuddyPress (1.5)
+	 */
+	function bp_get_settings_root_slug() {
+		return apply_filters( 'bp_get_settings_root_slug', buddypress()->settings->root_slug );
+	}

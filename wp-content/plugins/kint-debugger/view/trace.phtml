@@ -1,0 +1,40 @@
+<div class="kint-trace">
+	<ol>
+		<?php foreach ( $output as $i => $step ): ?>
+		<li>
+			<p>
+				<?php if ( isset($step['file']) ): ?>
+				<a href="#" class="kint-source-parent kint-plus"></a><?php echo call_user_func( self::$pathDisplayCallback, $step['file'], $step['line'] )?>
+				<?php else: ?>
+				PHP internal call
+				<?php endif ?>
+				&raquo;
+
+				<?php if (isset($step['object'])):?><a href="#" class="kint-object-parent"><?php endif ?>
+				<?php echo $step['function']?><?php if (isset($step['object'])):?></a><?php endif ?>(<?php if ( $step['args'] ): ?><a href="#" class="kint-args-parent">arguments</a><?php endif ?>)
+			</p>
+			<?php if ( $step['args'] ): ?>
+			<div class="kint-args">
+				<table cellspacing="0">
+					<?php foreach ( $step['args'] as $name => $arg ): ?>
+					<tr>
+						<td><code><?php echo $name ?></code></td>
+						<td>
+							<pre><?php s( $arg ) ?></pre>
+						</td>
+					</tr>
+					<?php endforeach ?>
+				</table>
+			</div>
+			<?php endif ?>
+			<?php if ( $step['file'] ): ?>
+			<div class="kint-source"><?php echo $step['source'] ?></div>
+			<?php endif ?>
+			<?php if ( isset($step['object']) ): ?>
+			<div class="kint-object"><?php s( $step['object'] ) ?></div>
+			<?php endif ?>
+		</li>
+		<?php endforeach ?>
+	</ol>
+</div>
+

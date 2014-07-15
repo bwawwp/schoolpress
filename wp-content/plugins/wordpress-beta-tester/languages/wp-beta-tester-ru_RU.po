@@ -1,0 +1,104 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WordPress Beta Tester 0.91\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wordpress-beta-tester\n"
+"POT-Creation-Date: 2010-05-09 09:31+0000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Sergey Biryukov <sergeybiryukov.ru@gmail.com>\n"
+"Language-Team: ru.wordpress.org <npocmop@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: wp-beta-tester.php:28
+#, php-format
+msgid "<strong>Error:</strong> Your current <a href=\"%1$s\">WordPress Beta Tester plugin configuration</a> will downgrade your install to a previous version - Please reconfigure it."
+msgstr "<strong>Ошибка:</strong> При текущих <a href=\"%1$s\">настройках плагина WordPress Beta Tester</a> ваша версия WordPress будет заменена предыдущей. Пожалуйста, перенастройте плагин."
+
+#: wp-beta-tester.php:38
+#: wp-beta-tester.php:161
+msgid "Beta Testing WordPress"
+msgstr "Бета-тестирование WordPress"
+
+#: wp-beta-tester.php:38
+msgid "Beta Testing"
+msgstr "Бета-тестирование"
+
+#: wp-beta-tester.php:155
+msgid "You do not have sufficient permissions to access this page."
+msgstr "У вас недостаточно полномочий для доступа к этой странице."
+
+#: wp-beta-tester.php:163
+msgid "<strong>Please note:</strong> Once you have switched your blog to one of these beta versions of software it will not always be possible to downgrade as the database structure maybe updated during the development of a major release."
+msgstr "<strong>Внимание:</strong> После перехода на очередную бета-версию может не оказаться возможности вернуться на предыдущую из-за возможных изменений в структуре базы данных при разработке нового релиза."
+
+#: wp-beta-tester.php:167
+msgid "<strong>Please note:</strong> There are no development builds of the beta stream you have choosen available so you will receieve normal update notifications."
+msgstr "<strong>Внимание:</strong> В выбранном варианте обновлений отсутствуют версии в разработке, поэтому вы будете получать обычные уведомления."
+
+#: wp-beta-tester.php:172
+#, php-format
+msgid "By their nature these releases are unstable and should not be used anyplace where your data is important. So please <a href=\"%1$s\">backup your database</a> before upgrading to a test release. In order to hear about the latest beta releases your best bet is to watch the <a href=\"%2$s\">development blog</a> and the <a href=\"%3$s\">beta forum</a>"
+msgstr "Эти версии нестабильны по своей сути и не должны использоваться на сайтах, где важна сохранность информации. Поэтому, пожалуйста, <a href=\"%1$s\">сделайте резервную копию базы данных</a> перед обновлением. Своевременно узнавать о выходе новых бета-версий  можно в <a href=\"%2$s\">блоге разработчиков</a> и на <a href=\"%3$s\">специальном форуме</a>."
+
+#: wp-beta-tester.php:173
+msgctxt "Url to database backup instructions"
+msgid "http://codex.wordpress.org/Backing_Up_Your_Database"
+msgstr "http://codex.wordpress.org/Создание_резервной_копии_базы_данных"
+
+#: wp-beta-tester.php:174
+msgctxt "Url to development blog"
+msgid "http://wordpress.org/development/"
+msgstr "http://wordpress.org/development/"
+
+#: wp-beta-tester.php:175
+msgctxt "Url to beta support forum"
+msgid "http://wordpress.org/support/forum/12"
+msgstr "http://wordpress.org/support/forum/12"
+
+#: wp-beta-tester.php:176
+#, php-format
+msgid "Thank you for helping in testing WordPress please <a href=\"%s\">report any bugs you find</a>."
+msgstr "Спасибо за помощь в тестировании WordPress! Пожалуйста, <a href=\"%s\">сообщайте обо всех найденных ошибках</a>."
+
+#: wp-beta-tester.php:177
+msgctxt "Url to raise a new trac ticket"
+msgid "http://core.trac.wordpress.org/newticket"
+msgstr "http://core.trac.wordpress.org/newticket"
+
+#: wp-beta-tester.php:179
+msgid "By default your WordPress install uses the stable update stream, to return to this please deactivate this plugin"
+msgstr "По умолчанию WordPress использует стабильные обновления. Чтобы вернуться к ним, деактивируйте плагин."
+
+#: wp-beta-tester.php:181
+msgid "Please select the update stream you would like this blog to use:"
+msgstr "Выберите вариант обновлений, которые вы хотите использовать на этом блоге:"
+
+#: wp-beta-tester.php:189
+msgid "Point release nightlies"
+msgstr "Для текущей ветки"
+
+#: wp-beta-tester.php:190
+msgid "This contains the work that is occuring on a branch in preperation for a x.x.x point release.  This should also be fairly stable but will be available before the branch is ready for beta."
+msgstr "Результаты работы над веткой при подготовке следующего релиза x.x.x. Этот вариант относительно стабилен, однако работа ещё не завершена."
+
+#: wp-beta-tester.php:195
+msgid "Bleeding edge nightlies"
+msgstr "Самые свежие сборки"
+
+#: wp-beta-tester.php:196
+msgid "This is the bleeding edge development code which may be unstable at times. <em>Only use this if you really know what you are doing</em>."
+msgstr "Код, находящийся в разработке и потенциально нестабильный. <em>Используйте этот вариант, только если уверены в том, что делаете</em>."
+
+#: wp-beta-tester.php:201
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: wp-beta-tester.php:203
+#, php-format
+msgid "Why don't you <a href=\"%s\">head on over and upgrade now</a>."
+msgstr "Теперь самое время <a href=\"%s\">перейти к обновлению</a>."
+
