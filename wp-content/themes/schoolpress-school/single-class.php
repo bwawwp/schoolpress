@@ -116,12 +116,12 @@ $class->getStudents();
 						{
 					?>
 						<?php 						
-							$forum_id = $class->forum_id;
+							$forum_id = $class->forum_id;							
 							if(!empty($forum_id))
 							{
 								?>
 								<h3>Recent Discussion <a class="btn btn-info btn-xs" href="<?php echo bbp_get_forum_permalink($forum_id); ?>">View All</a></h3>
-								<?php echo do_shortcode('[bbp-topic-index id="' . $forum_id . '"]'); ?>
+								<?php echo do_shortcode('[bbp-single-forum id="' . $forum_id . '"]'); ?>
 								<?php
 							}
 						?>
