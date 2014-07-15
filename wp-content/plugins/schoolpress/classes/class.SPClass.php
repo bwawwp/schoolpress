@@ -406,6 +406,7 @@ add_action( 'init', array( 'SPClass', 'init' ) );
 
 function class_columns( $columns ) {
 	$columns = array(
+		'cb' => true,
 		'title' => __( 'Class' ),
 		'author' => __( 'Teacher' ),
 		'department' => __( 'Department' )
