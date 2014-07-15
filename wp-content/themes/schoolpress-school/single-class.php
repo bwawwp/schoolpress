@@ -6,8 +6,6 @@
 global $post;
 $class = new SPClass($post->ID);
 $class->getStudents();
-
-//$class->group->id;
 ?>
 <?php get_header(); ?>
 	<?php if ( have_posts() ) the_post(); ?>
@@ -15,29 +13,36 @@ $class->getStudents();
 		<div class="alt_wrap">
 			<div class="container">
 				<?php getBreadcrumbs(); ?>
-				<div class="column three_fourths">
-					<h2><?php do_action( 'sb_page_title' ); ?></h2>
-					<p>By <?php the_author(); ?> | <i class="fa fa-graduation-cap"></i> <?php echo count($class->students) . " " . _n("Student", "Students", count($class->students));?></p>
-					<hr />
-					<?php the_content(); ?>
-					<hr />
-					<?php
-						$departments = get_the_terms( $post->ID, 'department' );
-						if ( $departments && ! is_wp_error( $departments ) ) : 
-							echo '<div class="column one_half">';
-							$department_links = array();					
-							foreach ( $departments as $department ) {
-								$department_links[] = '<span class="label label-info">' . $department->name . '</span>';
-							}
-							echo 'Department: ' . join( ", ", $department_links );
+				<div class="column three_fourths">					
+					<?php do_action( 'sb_page_title' ); ?>
+					
+					<?php if(!empty($_REQUEST['invite'])) { ?>					
+						
+						<h2>Invite Students</h2>
+						
+					<?php } else { ?>					
+						<p>By <?php the_author(); ?> | <i class="fa fa-graduation-cap"></i> <?php echo count($class->students) . " " . _n("Student", "Students", count($class->students));?></p>
+						<hr />
+						<?php the_content(); ?>
+						<hr />
+						<?php
+							$departments = get_the_terms( $post->ID, 'department' );
+							if ( $departments && ! is_wp_error( $departments ) ) : 
+								echo '<div class="column one_half">';
+								$department_links = array();					
+								foreach ( $departments as $department ) {
+									$department_links[] = '<span class="label label-info">' . $department->name . '</span>';
+								}
+								echo 'Department: ' . join( ", ", $department_links );
+								echo '</div>';
+							 endif;
+						?>
+						<?php
+							echo '<div class="column one_half last">';
+							echo 'Semester: <span class="label label-info">' . $class->semester->name . '</span>';
 							echo '</div>';
-						 endif;
-					?>
-					<?php
-						echo '<div class="column one_half last">';
-						echo 'Semester: <span class="label label-info">' . $class->semester->name . '</span>';
-						echo '</div>';
-					?>
+						?>
+					<?php } //endif empty($_REQUEST['invite'])?>
 				</div>
 				<div class="column one_fourth last">
 					<?php echo get_the_post_thumbnail( $post->ID, 'medium' ); ?>
@@ -55,7 +60,7 @@ $class->getStudents();
 						<?php wp_link_pages( array( 'before' => '<div class="entry-pages cb">' . __( 'Pages:', 'startbox' ), 'after' => '</div>' ) ); ?>
 
 						<?php 							
-							if(!empty($_REQUEST['invite']))
+							if(!empty($_REQUEST['invite']) && $class->isTeacher())
 							{
 								get_template_part('class', 'invite');
 							}
@@ -109,17 +114,19 @@ $class->getStudents();
 							}
 						?>
 					</div>
-					<hr />
+					
 					<?php
-						//must be in the group to view this						
-						if(bp_group_is_member($class->group))
+						if(!empty($_REQUEST['invite']))
 						{
-					?>
-						<?php 						
+							//nothing here for now
+						}												
+						elseif(bp_group_is_member($class->group))
+						{									
 							$forum_id = $class->forum_id;							
 							if(!empty($forum_id))
 							{
 								?>
+								<hr />
 								<h3>Recent Discussion <a class="btn btn-info btn-xs" href="<?php echo bbp_get_forum_permalink($forum_id); ?>">View All</a></h3>
 								<?php echo do_shortcode('[bbp-single-forum id="' . $forum_id . '"]'); ?>
 								<?php

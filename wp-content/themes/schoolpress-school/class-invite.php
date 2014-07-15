@@ -29,6 +29,12 @@
 ?>
 <form action="" method="post">
 	<input type="hidden" name="invite" value="1" />
+	<p>Enter email addresses to invite students to your class. Enter one email address per line.</p>
+	
 	<textarea name="invite_emails" rows="5" cols="50"><?php echo esc_textarea($invite_emails);?></textarea>
-	<input type="submit" value="Send Invites" />
+	<br /><br />
+	
+	<p>
+		<input type="submit" value="Send Invites" />
+	</p>
 </form>

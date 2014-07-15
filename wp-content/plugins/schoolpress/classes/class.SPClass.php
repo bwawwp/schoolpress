@@ -156,6 +156,25 @@ class SPClass {
 		}
 	}
 	
+	//is a user the teacher of this class?
+	function isTeacher($user_id = NULL)
+	{
+		//assume current user
+		if(empty($user_id))
+		{
+			global $current_user;
+			$user_id = $current_user->ID;
+		}
+		
+		if(empty($user_id))
+			return false;
+			
+		if($this->teacher_id == $user_id)
+			return true;
+		else
+			return false;
+	}
+	
 	//get list of students for this class
 	function getStudents($force = false)
 	{
@@ -362,12 +381,13 @@ class SPClass {
 		$user = get_userdata($user_id);
 		
 		//get all invites by email
-		$invites = $wpdb->get_results("SELECT * FROM $wpdb->bp_groups_groupmeta WHERE meta_value = '" . esc_sql(strtolower($user->user_email)) . "' ");
-		
+		$sqlQuery = "SELECT * FROM " . $wpdb->prefix . "bp_groups_groupmeta WHERE meta_value = '" . esc_sql(strtolower($user->user_email)) . "' ";		
+		$invites = $wpdb->get_results($sqlQuery);
+				
 		if(!empty($invites))
 		{
 			foreach($invites as $invite)
-			{
+			{										
 				//add to group
 				groups_join_group($invite->group_id, $user_id);
 				
