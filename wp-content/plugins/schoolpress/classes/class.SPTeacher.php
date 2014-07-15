@@ -3,7 +3,7 @@
 	Teacher Wrapper for SchoolPress Teacher User Type
 	/wp-content/plugins/schoolpress/classes/class.SPTeacher.php
 */
-class SPTeacher extends WP_User {
+class SPTeacher extends SPStudent {
 	/*
 		Manage the Teacher user type
 	*/
@@ -28,5 +28,3 @@ class SPTeacher extends WP_User {
 		return $this->classes;
 	}
 }
-
-?>

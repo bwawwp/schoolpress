@@ -22,9 +22,9 @@ require_once(SP_DIR . "/scheduled/crons.php");				//crons for expiring members, 
 require_once(SP_DIR . "/classes/class.SPClass.php");		//class for Class
 require_once(SP_DIR . "/classes/class.SPAssignment.php");	//class for Assignments
 require_once(SP_DIR . "/classes/class.SPSubmission.php");	//class for Assignments
-require_once(SP_DIR . "/classes/class.SPSchool.php");		//class for School
-require_once(SP_DIR . "/classes/class.SPTeacher.php");		//class for Teacher
 require_once(SP_DIR . "/classes/class.SPStudent.php");		//class for Student
+require_once(SP_DIR . "/classes/class.SPTeacher.php");		//class for Teacher
+require_once(SP_DIR . "/classes/class.SPSchool.php");		//class for School
 
 //Loading Page Templates
 require_once(SP_DIR . "/pages/my_classes.php");

@@ -24,27 +24,58 @@
 	{			
 		ob_start();
 		global $current_user;
+		
+		//classes I teach
+		$teacher = new SPTeacher($current_user->ID);
+		$teacher->getClassesForTeacher();
+		if(!empty($teacher->classes))
+		{
 		?>
-		<div class="column one_half">
-			<h3>Classes I Teach</h3>
-			<?php
-				$teacher = new SPTeacher($current_user->ID);
-				$teacher->getClassesForTeacher();
-				if(!empty($teacher->classes))
-				{
-					foreach($teacher->classes as $teacher->singleclass)
+			<div class="column one_half">
+				<h3>Classes I Teach</h3>
+				<?php
+					$teacher = new SPTeacher($current_user->ID);
+					$teacher->getClassesForTeacher();
+					if(!empty($teacher->classes))
 					{
-						global $post;
-						$post = $teacher->singleclass;
-						setup_postdata( $post );
-						get_template_part( 'loop', 'class' );
+						foreach($teacher->classes as $teacher->singleclass)
+						{
+							global $post;
+							$post = $teacher->singleclass;
+							setup_postdata( $post );
+							get_template_part( 'loop', 'class' );
+						}
 					}
-				}
-			?>
-		</div>
-		<div class="column one_half last">
-
-		</div>
+				?>
+			</div>
+			<div class="column one_half last">
+				<h3>Classes I'm In</h3>		
+		<?php
+		}
+		
+		//classes I'm In		
+		$student = new SPStudent($current_user->ID);
+		$student->getClassesForStudent();
+		if(!empty($student->classes))
+		{
+			foreach($student->classes as $student->singleclass)
+			{
+				global $post;
+				$post = $student->singleclass;
+				setup_postdata( $post );
+				get_template_part( 'loop', 'class' );
+			}
+		}
+		else
+		{
+		?>
+			<p>You are not a member of any classes yet. <a href="<?php echo home_url();?>">Why not join some</a>?</p>
+		<?php
+		}
+		?>
+		
+		<?php if(!empty($teacher->classes)) { ?></div><?php } ?>
+		
 		<div class="clear"></div>
 		<?php
 		$temp_content = ob_get_contents();

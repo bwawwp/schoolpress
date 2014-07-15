@@ -101,7 +101,6 @@ class SPClass {
 			'post_title' => $name,
 			'post_content' => $description
 		));
-		groups_update_groupmeta( $group_id, 'forum_id', $forum_id );
 				
 		//add CPT post
 		$insert = array(
@@ -120,9 +119,14 @@ class SPClass {
 		wp_set_object_terms($class_post_id, intval($department), "department");
 		wp_set_object_terms($class_post_id, intval($semester), "semester");
 		
-		//add meta fields
+		//add meta fields to class
 		update_post_meta($class_post_id, "class_enrollment", $enrollment);
 		update_post_meta($class_post_id, "group_id", $group_id);
+		update_post_meta($class_post_id, "forum_id", $forum_id);
+		
+		//update group meta
+		groups_update_groupmeta( $group_id, 'forum_id', $forum_id );
+		groups_update_groupmeta( $group_id, 'class_id', $class_post_id );		
 		
 		$this->getPost($class_post_id);
 		$this->getGroup();
@@ -302,7 +306,7 @@ class SPClass {
 	
 	//register CPT and Taxonomies on init, other hook setups
 	function init() {
-	
+			
 		if(!empty($_REQUEST['test']))
 		{
 			wp_mail('jason+test1@strangerstudios.com', 'Testing... ' . time(), 'Testing...' . time());
@@ -407,7 +411,7 @@ class SPClass {
 		groups_delete_group($this->group_id);
 
 		//delete corresponding forum
-		delete_post($this->forum_id);
+		wp_delete_post($this->forum_id);
 	}
 	
 	//hook
