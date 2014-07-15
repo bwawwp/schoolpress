@@ -96,8 +96,13 @@ class SPClass {
 		$group_id = groups_create_group($group);	
 		
 		//add the forum		
-		//groups_new_group_forum($group_id, $name, $description );
-		
+		$forum_id = bbp_insert_forum(array(
+			'post_author' => $user_id,
+			'post_title' => $name,
+			'post_content' => $description
+		));
+		groups_update_groupmeta( $group_id, 'forum_id', $forum_id );
+				
 		//add CPT post
 		$insert = array(
 			'post_title' => $name,
@@ -278,6 +283,7 @@ class SPClass {
 	
 	//register CPT and Taxonomies on init, other hook setups
 	function init() {
+	
 		if(!empty($_REQUEST['test']))
 		{
 			wp_mail('jason+test1@strangerstudios.com', 'Testing... ' . time(), 'Testing...' . time());
@@ -378,10 +384,10 @@ class SPClass {
 	function deleteMe()
 	{		
 		//delete corresponding group
-		groups_delete_group($this->group_id);	
-		
-		//delete corresponding post
-		wp_delete_post($this->id);	
+		groups_delete_group($this->group_id);
+
+		//delete corresponding forum
+		delete_post($this->forum_id);
 	}
 	
 	//hook
