@@ -179,6 +179,37 @@ class SPClass {
 			return false;
 	}
 	
+	//is a user a student of this class?
+	function isStudent($user_id = NULL)
+	{
+		//assume current user
+		if(empty($user_id))
+		{
+			global $current_user;
+			$user_id = $current_user->ID;
+		}
+		
+		if(empty($user_id))
+			return false;
+		
+		$students = $this->getStudents();
+		
+		if(empty($students))
+			return false;
+		
+		foreach($students as $student)
+			if($student->ID == $user_id)
+				return true;
+				
+		return false;
+	}
+	
+	//is a student or teacher?
+	function isMember($user_id = NULL)
+	{
+		return $this->isTeacher($user_id) || $this->isStudent($user_id);
+	}
+	
 	//get list of students for this class
 	function getStudents($force = false)
 	{
@@ -400,7 +431,25 @@ class SPClass {
 			}
 		}
 	}
+	
+	/*
+		Add a student to this class.
+		Just join the BuddyPress group.
+	*/
+	function joinClass($user_id = NULL)
+	{
+		if(empty($user_id))
+		{
+			global $current_user;
+			$user_id = $current_user->ID;
+		}
 		
+		if(empty($this->group) || empty($this->group->id) || empty($user_id))
+			return false;
+		else
+			return groups_join_group($this->group->id, $user_id);
+	}
+	
 	/*
 		Clean up on before deleting.
 	*/

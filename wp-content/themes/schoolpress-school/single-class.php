@@ -3,9 +3,35 @@
  * Template for displaying all single class posts
 **/
 
+//get some vars
 global $post;
 $class = new SPClass($post->ID);
 $class->getStudents();
+
+//inviting?
+if(!empty($_REQUEST['invite']) && !$class->isTeacher())
+{
+	//non-teacher trying to invite, redirect them back to class
+	wp_redirect(get_permalink($post->ID));
+	exit;
+}
+
+//enrolling?
+if(!empty($_REQUEST['enroll']))
+{	
+	//check for open enrollment
+	if($class->enrollment)
+	{	
+		//enroll the current user
+		$class->joinClass();
+		
+		//redirect to this page to reset somet things
+		wp_redirect(get_permalink($post->ID));
+		exit;
+	}
+	else
+		wp_die("This class does not have open enrollment.");
+}
 ?>
 <?php get_header(); ?>
 	<?php if ( have_posts() ) the_post(); ?>
@@ -120,7 +146,7 @@ $class->getStudents();
 						{
 							//nothing here for now
 						}												
-						elseif(bp_group_is_member($class->group))
+						elseif($class->isMember())
 						{									
 							$forum_id = $class->forum_id;							
 							if(!empty($forum_id))
@@ -138,6 +164,29 @@ $class->getStudents();
 						</div>
 					<?php
 						}
+						elseif($class->enrollment)
+						{
+							//open enrollment, let the user invite themself in
+							if(is_user_logged_in())
+							{							
+							?>
+							<p>This class has open enrollment. <a href="?enroll=1">Click here if you would like to join this class</a>.</p>
+							<?php
+							}
+							else
+							{
+							?>
+							<p>Please <a href="<?php echo wp_login_url();?>">login</a> or <a href="<?php echo network_site_url("/membership/");?>">sign up</a> to join this class.</p>
+							<?php
+							}
+						}
+						else
+						{
+							//closed enrollment
+							?>
+							<p>This class is closed to the public. If you feel you should be invited to this class, please contact the teacher.</p>
+							<?php
+						}
 					?>
 
 				<?php //comments_template('', true); ?>
@@ -145,14 +194,16 @@ $class->getStudents();
 			
 			<?php
 				//must be in the group to view this				
-				if(bp_group_is_member($class->group))
+				if($class->isMember())
 				{
 			?>
 			<div id="primary" class="aside">
 				<div class="well">
 					<h3>
 						Students
-						<small><a href="?invite=1">+ Invite</a></small>
+						<?php if($class->isTeacher()) { ?>
+							<small><a href="?invite=1">+ Invite</a></small>
+						<?php } ?>
 					</h3>
 					<hr />
 					<ul class="media-list">

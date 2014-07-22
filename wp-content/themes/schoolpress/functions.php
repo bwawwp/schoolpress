@@ -1,4 +1,7 @@
 <?php
+//levels 1 and 2 don't give you a site on the network
+global $pmpro_network_non_site_levels;
+$pmpro_network_non_site_levels = array(1,2);
 
 function my_template_redirect()
 {

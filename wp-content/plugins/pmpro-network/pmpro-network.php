@@ -3,7 +3,7 @@
 Plugin Name: Paid Memberships Pro Network Site Helper
 Plugin URI: http://www.paidmembershipspro.com/network-sites/
 Description: Sample Network/Multisite Setup for Sites Running Paid Memberships Pro. This plugin requires the Paid Memberships Pro plugin, which can be found in the WordPress repository.
-Version: .3.2
+Version: .3.3.1
 Author: Stranger Studios
 Author URI: http://www.strangerstudios.com
 */
@@ -12,9 +12,12 @@ Author URI: http://www.strangerstudios.com
 	This code is licensed under the GPLv2.
 */
 
-//set these values
+//set these values here or in a custom plugin
+/*
 define('PMPRO_NETWORK_MANAGE_SITES_SLUG', '/manage-sites/');	//change to relative path of your manage sites page if you are setting site credits > 1
-$pmpro_network_non_site_levels = array(1,2); // change to level id's that should not create a site: e.g. array('1','2','3')
+global $pmpro_network_non_site_levels;
+$pmpro_network_non_site_levels = array(1,2,3,4,5,7,9); // change to level id's that should not create a site: e.g. array('1','2','3')
+*/
 
 //includes
 require_once(dirname(__FILE__) . "/pages/manage-sites.php");
@@ -27,7 +30,7 @@ function pmpron_pmpro_checkout_boxes()
 {
 	global $current_user, $wpdb, $pmpro_network_non_site_levels;
 
-	// Return if requested level is in non site levels array
+	// Return if requested level is in non site levels array	
 	if ( in_array( $_REQUEST['level'], $pmpro_network_non_site_levels ) )
 		return;
 
@@ -124,7 +127,7 @@ add_action('pmpro_checkout_boxes', 'pmpron_pmpro_checkout_boxes');
 //update the user after checkout
 function pmpron_update_site_after_checkout($user_id)
 {
-	global $current_user, $current_site;
+	global $current_user, $current_site, $pmpro_network_non_site_levels;
 	
 	if(isset($_REQUEST['sitename']))
 	{   
@@ -167,7 +170,7 @@ function pmpron_update_site_after_checkout($user_id)
 			return new WP_Error('pmpron_reactivation_failed', __('<strong>ERROR</strong>: Site reactivation failed.'));
 		}
 	}
-	else
+	elseif(!in_array( $_REQUEST['level'], $pmpro_network_non_site_levels ))
 	{ 
 		$blog_id = pmpron_addSite($sitename, $sitetitle);
 		if(is_wp_error($blog_id))
@@ -267,9 +270,21 @@ function pmpron_pmpro_registration_checks($pmpro_continue_registration)
 		return $pmpro_continue_registration;
 
 	global $pmpro_msg, $pmpro_msgt, $current_site, $current_user, $pmpro_network_non_site_levels;
-	$sitename = $_REQUEST['sitename'];
-	$sitetitle = $_REQUEST['sitetitle'];
-	$blog_id = $_REQUEST['blog_id'];
+	
+	if(!empty($_REQUEST['sitename']))
+		$sitename = $_REQUEST['sitename'];
+	else
+		$sitename = "";
+		
+	if(!empty($_REQUEST['sitetitle']))
+		$sitetitle = $_REQUEST['sitetitle'];
+	else
+		$sitetitle = "";
+		
+	if(!empty($_REQUEST['blog_id']))
+		$blog_id = $_REQUEST['blog_id'];
+	else
+		$blog_id = "";
 
 	// Return if requested level is in non site levels array
 	if ( in_array( $_REQUEST['level'], $pmpro_network_non_site_levels ) )

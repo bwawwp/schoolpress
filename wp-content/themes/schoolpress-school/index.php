@@ -7,7 +7,7 @@
 	<div class="alt_wrap">
 		<div class="container">
 			<h2>SchoolPress is an Open Source App for Classes, Teachers and Students.</h2>
-			<p>Browse open classes below &mdash; Or, <a href="/add-class/">start your own class</a>.</p>
+			<p>Browse open classes below &mdash; Or, <a href="/start-a-class/">start your own class</a>.</p>
 		</div>
 	</div>
 	<div id="container">
