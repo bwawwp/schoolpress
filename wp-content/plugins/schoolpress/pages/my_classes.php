@@ -11,7 +11,7 @@
 			{
 				/*
 					Preheader operations here.
-				*/				
+				*/
 			}
 		}
 	}
@@ -34,7 +34,7 @@
 			<div class="column one_half">
 				<h2 class="page-title">Classes I Teach</h2>
 				<?php
-					$teacher = new SPTeacher($current_user->ID);
+					$teacher = new SPTeacher($current_user->ID);										
 					$teacher->getClassesForTeacher();
 					if(!empty($teacher->classes))
 					{

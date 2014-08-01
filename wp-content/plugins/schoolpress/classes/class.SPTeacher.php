@@ -12,6 +12,8 @@ class SPTeacher extends SPStudent {
 	function getClassesForTeacher()
 	{
 		//need a user ID to do this
+		if(empty($this->ID))
+			return false;
 		
 		//get classes
 		$this->classes = get_posts( array(
