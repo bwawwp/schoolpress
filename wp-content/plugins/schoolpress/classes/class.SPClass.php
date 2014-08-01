@@ -402,7 +402,33 @@ class SPClass {
 				'rewrite' => array( 'slug' => 'department' ),
 				'hierarchical' => true
 			)
+		);
+		
+		//visibility taxonomy
+		register_taxonomy(
+			'visibility',
+			'class',
+			array(
+				'label' => __( 'Visibility' ),
+				'rewrite' => array( 'slug' => 'visibility' ),
+				'hierarchical' => true
+			)
 		);		
+	}
+	
+	/*
+		Make sure visibility taxonomies are in place.
+	*/
+	static function createVisibilities()
+	{
+		//check if they already exist
+		$visibilities = get_terms('visibility', 'hide_empty=0');
+				
+		if(empty($visibilities) && false)
+		{
+			wp_insert_term( 'homepage', 'visibility');
+			wp_insert_term( 'search', 'visibility');
+		}
 	}
 	
 	/*

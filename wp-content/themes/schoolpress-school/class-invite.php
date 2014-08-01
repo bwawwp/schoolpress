@@ -21,20 +21,20 @@
 		else
 		{
 			$invite_emails = "";
-			sp_showMessage("Invites sent.", "success");		
+			sp_showMessage("Invites sent. <a href=\"" . get_permalink($post->ID) . "\">Return to Class</a>", "success");		
 		}		
 	}
 		
 	//form
 ?>
-<form action="" method="post">
+<form class="form" action="" method="post">
 	<input type="hidden" name="invite" value="1" />
-	<p>Enter email addresses to invite students to your class. Enter one email address per line.</p>
-	
-	<textarea name="invite_emails" rows="5" cols="50"><?php echo esc_textarea($invite_emails);?></textarea>
-	<br /><br />
-	
-	<p>
-		<input type="submit" value="Send Invites" />
-	</p>
+	<p class="pmpro_message pmpro_alert">Enter one email address per line to invite students to your class.</p>
+	<div class="form-group">	
+		<textarea class="form-control" rows="3" name="invite_emails" rows="5" cols="50"><?php echo esc_textarea($invite_emails);?></textarea>
+	</div>
+	<div class="form-group">
+		<input class="btn btn-info" type="submit" value="Send Invites" />
+		<a class="btn btn-link" href="<?php echo get_permalink($post->ID); ?>">Cancel</a>
+	</div>
 </form>

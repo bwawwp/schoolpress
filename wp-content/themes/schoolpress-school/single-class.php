@@ -39,40 +39,38 @@ if(!empty($_REQUEST['enroll']))
 		<div class="alt_wrap">
 			<div class="container">
 				<?php getBreadcrumbs(); ?>
+				<?php if(!empty($_REQUEST['invite'])) { ?>					
+					<?php do_action( 'sb_page_title' ); ?>
+					<p>Invite Students to join your class.</p>
+				<?php } else { ?>
 				<div class="column three_fourths">					
 					<?php do_action( 'sb_page_title' ); ?>
-					
-					<?php if(!empty($_REQUEST['invite'])) { ?>					
-						
-						<h2>Invite Students</h2>
-						
-					<?php } else { ?>					
-						<p>By <?php the_author(); ?> | <i class="fa fa-graduation-cap"></i> <?php echo count($class->students) . " " . _n("Student", "Students", count($class->students));?></p>
-						<hr />
-						<?php the_content(); ?>
-						<hr />
-						<?php
-							$departments = get_the_terms( $post->ID, 'department' );
-							if ( $departments && ! is_wp_error( $departments ) ) : 
-								echo '<div class="column one_half">';
-								$department_links = array();					
-								foreach ( $departments as $department ) {
-									$department_links[] = '<span class="label label-info">' . $department->name . '</span>';
-								}
-								echo 'Department: ' . join( ", ", $department_links );
-								echo '</div>';
-							 endif;
-						?>
-						<?php
-							echo '<div class="column one_half last">';
-							echo 'Semester: <span class="label label-info">' . $class->semester->name . '</span>';
+					<p>By <?php the_author(); ?> | <i class="fa fa-graduation-cap"></i> <?php echo count($class->students) . " " . _n("Student", "Students", count($class->students));?></p>
+					<hr />
+					<?php the_content(); ?>
+					<hr />
+					<?php
+						$departments = get_the_terms( $post->ID, 'department' );
+						if ( $departments && ! is_wp_error( $departments ) ) : 
+							echo '<div class="column one_half">';
+							$department_links = array();					
+							foreach ( $departments as $department ) {
+								$department_links[] = '<span class="label label-default">' . $department->name . '</span>';
+							}
+							echo 'Department: ' . join( ", ", $department_links );
 							echo '</div>';
-						?>
-					<?php } //endif empty($_REQUEST['invite'])?>
+						 endif;
+					?>
+					<?php
+						echo '<div class="column one_half last">';
+						echo 'Semester: <span class="label label-default">' . $class->semester->name . '</span>';
+						echo '</div>';
+					?>
 				</div>
 				<div class="column one_fourth last">
 					<?php echo get_the_post_thumbnail( $post->ID, 'medium' ); ?>
 				</div>
+				<?php } //endif empty($_REQUEST['invite'])?>
 			</div>
 		</div>
 		<div id="container">
@@ -153,7 +151,7 @@ if(!empty($_REQUEST['enroll']))
 							{
 								?>
 								<hr />
-								<h3>Recent Discussion <a class="btn btn-info btn-xs" href="<?php echo bbp_get_forum_permalink($forum_id); ?>">View All</a></h3>
+								<h3>Recent Discussion <a class="btn btn-info btn-xs" href="<?php echo bbp_get_forum_permalink($forum_id); ?>"><i class="fa fa-eye"></i> View All</a></h3>
 								<?php echo do_shortcode('[bbp-single-forum id="' . $forum_id . '"]'); ?>
 								<?php
 							}
@@ -170,13 +168,13 @@ if(!empty($_REQUEST['enroll']))
 							if(is_user_logged_in())
 							{							
 							?>
-							<p>This class has open enrollment. <a href="?enroll=1">Click here if you would like to join this class</a>.</p>
+							<div class="pmpro_message pmpro_alert">This class has open enrollment. <a href="?enroll=1">Click here if you would like to join this class</a>.</div>
 							<?php
 							}
 							else
 							{
 							?>
-							<p>Please <a href="<?php echo wp_login_url();?>">login</a> or <a href="<?php echo network_site_url("/membership/");?>">sign up</a> to join this class.</p>
+							<div class="pmpro_message pmpro_alert">Please <a href="<?php echo wp_login_url();?>">login</a> or <a href="<?php echo network_site_url("/membership/");?>">sign up</a> to join this class.</div>
 							<?php
 							}
 						}
@@ -184,7 +182,7 @@ if(!empty($_REQUEST['enroll']))
 						{
 							//closed enrollment
 							?>
-							<p>This class is closed to the public. If you feel you should be invited to this class, please contact the teacher.</p>
+							<div class="pmpro_message pmpro_danger">This class is closed to the public. If you feel you should be invited to this class, please contact the teacher.</div>
 							<?php
 						}
 					?>
@@ -202,7 +200,7 @@ if(!empty($_REQUEST['enroll']))
 					<h3>
 						Students
 						<?php if($class->isTeacher()) { ?>
-							<small><a href="?invite=1">+ Invite</a></small>
+							<a class="btn btn-info btn-xs" href="?invite=1"><i class="fa fa-plus"></i> Invite</a></small>
 						<?php } ?>
 					</h3>
 					<hr />

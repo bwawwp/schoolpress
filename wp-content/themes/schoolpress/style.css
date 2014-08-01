@@ -33,6 +33,7 @@ a:hover {color: #35b2bb; }
 #footer_wrap {border-top: 1px solid #EEE; }
 #container_wrap {background: #FFF; padding-bottom: 50px; }
 
+#header .btn-group {margin-top: 25px; }
 #logo {margin: 35px 0 25px 0; }
 #logo #site-title a {color: #FFF; font-size: 60px; font-family: 'Sanchez', 'Garamond', serif; }
 #logo #site-title a:hover {text-decoration: none; }
@@ -70,12 +71,18 @@ a:hover {color: #35b2bb; }
 /* Paid Memberships Pro Styles */
 .pmpro_btn, .pmpro_btn:link, .login input[type=submit] {background: #563d7c; color: #FFF; font-weight: 400; border: none; padding: 6px 12px; border-radius: 4px; font-size: 14px; line-height: 1.42857143; }
 .pmpro_btn:hover, .login input[type=submit]:hover {background: #522990;  }
+.pmpro_btn:visited {color: #FFF; }
 
 .pmpro-levels .page {text-align: center; }
 .pmpro-levels h1.page-title { }
 .pmpro_level {text-align: center; }
 .pmpro_level h2 {color: #563d7c; font-size: 40px; font-weight: 300; }
 .pmpro_level .pmpro_btn {display: block; margin: 0 25%; }
+
+.entry-content .pmpro_checkout {margin-bottom: 1em; border: none; }
+.entry-content .pmpro_checkout th, .entry-content .pmpro_checkout td {padding-left: 0; padding-right: 0; }
+form.pmpro_form label {width: 220px; }
+form.pmpro_form .pmpro_submit {margin-left: 230px; margin-bottom: 3em; }
 
 @media (min-width:768px){
 	#header, #container, .layout-two-col-right div#container, #footer {width: 750px; }

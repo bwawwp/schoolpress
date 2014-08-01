@@ -29,3 +29,10 @@ require_once(SP_DIR . "/classes/class.SPSchool.php");		//class for School
 //Loading Page Templates
 require_once(SP_DIR . "/pages/my_classes.php");
 require_once(SP_DIR . "/pages/edit_class.php");
+
+//Activation
+function sp_activation()
+{
+	add_action('init', array('SPClass', 'createVisibilities'), 20);
+}
+register_activation_hook(__FILE__, 'sp_activation');

@@ -26,7 +26,7 @@ function sp_showMessage($msg = NULL, $msgt = NULL)
 	if(!empty($sp_msg))
 	{
 	?>
-	<div class="message <?php echo esc_attr($sp_msgt);?>"><?php echo $sp_msg;?></div>
+	<div class="pmpro_message pmpro_<?php echo esc_attr($sp_msgt);?>"><?php echo $sp_msg;?></div>
 	<?php
 	}
 }

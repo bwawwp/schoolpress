@@ -4,11 +4,13 @@
 
 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="entry-header">
-		<a class="entry-photo" href="<?php the_permalink() ?>" rel="bookmark" title="<?php echo esc_attr( get_the_title() ); ?>">
-			<?php echo get_the_post_thumbnail( $post->ID, 'thumbnail' ); ?>
-		</a>
+		<?php if ( has_post_thumbnail() ) { ?>
+			<a class="entry-photo" href="<?php the_permalink() ?>" rel="bookmark" title="<?php echo esc_attr( get_the_title() ); ?>">
+				<?php echo get_the_post_thumbnail( $post->ID, 'thumbnail' ); ?>
+			</a>
+		<?php } ?>
 		<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf(__('Permalink to %s', 'startbox'), esc_html(get_the_title(), 1)) ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-		<div class="entry-meta">By <?php the_author_posts_link(); ?> | <i class="fa fa-graduation-cap"></i> <?php echo count($class->students) . " " . _n("Student", "Students", count($class->students));?></div><!-- .entry-meta -->
+		<div class="entry-meta">By <?php the_author_posts_link(); ?> | <i class="fa fa-graduation-cap"></i> <?php echo count($class->getStudents()) . " " . _n("Student", "Students", count($class->getStudents()));?></div><!-- .entry-meta -->
 	</div><!-- .entry-header -->
 
 	<?php do_action( 'sb_before_post_content' ); ?>

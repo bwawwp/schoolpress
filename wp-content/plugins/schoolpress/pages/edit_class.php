@@ -150,7 +150,7 @@
 			<div class="form-group">
 				<div class="col-sm-10 col-sm-offset-2">
 					<label for="class_enrollment">
-						<input type="checkbox" id="class_enrollment" name="class_enrollment" value="1" <?php checked($class_enrollment, 1); ?> /> Allow students to apply for this class.
+						<input type="checkbox" id="class_enrollment" name="class_enrollment" value="1" <?php checked($class_enrollment, 1); ?> /> Allow any student to join this class. (Leave unchecked for invite-only.)
 					</label>
 				</div>
 			</div>

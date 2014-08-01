@@ -32,7 +32,7 @@
 		{
 		?>
 			<div class="column one_half">
-				<h3>Classes I Teach</h3>
+				<h2 class="page-title">Classes I Teach</h2>
 				<?php
 					$teacher = new SPTeacher($current_user->ID);
 					$teacher->getClassesForTeacher();
@@ -49,7 +49,7 @@
 				?>
 			</div>
 			<div class="column one_half last">
-				<h3>Classes I'm In</h3>		
+				<h2 class="page-title">Classes I'm In</h2>
 		<?php
 		}
 		
@@ -69,7 +69,7 @@
 		else
 		{
 		?>
-			<p>You are not a member of any classes yet. <a href="<?php echo home_url();?>">Why not join some</a>?</p>
+			<div class="pmpro_message pmpro_alert">You are not a member of any classes yet. <a href="<?php echo home_url();?>">Why not join some</a>?</div>
 		<?php
 		}
 		?>

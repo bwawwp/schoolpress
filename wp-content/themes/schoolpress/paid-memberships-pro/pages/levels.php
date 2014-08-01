@@ -45,4 +45,5 @@ if($pmpro_msg)
 		<?php
 		}
 		?>		
+		<div class="clear"></div>
 	</div>  <!-- end #pmpro_levels -->

@@ -17,6 +17,35 @@
 	
 	<?php if ( has_action( 'sb_header' ) ) { ?>
 		<div id="header">
+			<?php
+				if ($user_ID) 
+				{ 
+					global $current_user;					
+					?>					  
+					<div class="btn-group pull-right">
+						<a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
+							<i class="fa fa-user"></i>
+							<?php echo preg_replace("/\@.*/", "", $current_user->display_name)?>
+						</a>
+						 <ul class="dropdown-menu">							
+							<li><a href="/your-profile/">My Profile</a></li>
+							<li class="divider"></li>
+							<li><a href="<?php echo wp_logout_url( ); ?> " title="Log Out"><small>Log Out</small></a></li>
+						</ul>
+					</div>
+					<?php /*<div class="pull-right"><?php get_search_form(); ?></div> */ ?>
+					<?php
+				  }
+				  else
+				  {
+					if(!is_page('login'))
+					{
+						?>
+						<a href="/login/">Log In</a>
+						<?php
+					}
+				}
+				?>	
 			<?php do_action( 'sb_header' ); ?>
 			<div class="clear"></div>
 		</div><!-- #header -->
