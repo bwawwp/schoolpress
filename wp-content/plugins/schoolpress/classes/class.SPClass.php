@@ -345,7 +345,9 @@ class SPClass {
 		
 		//hooks
 		add_action('before_delete_post', array('SPClass', 'before_delete_post'));
-		add_action('user_register', array('SPClass', 'user_register_classes'));
+		add_action('user_register', array('SPClass', 'user_register_classes'));		
+		add_filter( 'manage_edit-class_columns', array('SPClass', 'class_columns')) ;
+		add_action( 'manage_class_posts_custom_column', array('SPClass', 'manage_class_columns'), 10, 2 );
 	
 		//assignment CPT
 		$labels = array(
@@ -503,38 +505,40 @@ class SPClass {
 	//magic method, get post meta
     function __get( $key ) {
         return get_post_meta($this->id, $key, true);
-    } 
+    }
+	
+	/*
+		Manage columns for SPClass CPT
+	*/
+	//setup columns
+	static function class_columns( $columns ) {
+		$columns = array(		
+			'cb' => true,
+			'title' => __( 'Class' ),
+			'author' => __( 'Teacher' ),
+			'department' => __( 'Department' )
+		);
+		return $columns;
+	}
+	//content of columns
+	static function manage_class_columns( $column, $post_id ) {
+		global $post;
+		switch( $column ) {
+			case 'department' :
+				/* Get the post departments. */
+				$departments = get_the_terms( $post_id, 'department' );
+				foreach($departments as $department) {
+					$department_links[] = $department->name;
+				}
+				echo join( ", ", $department_links );
+				break;
+				
+			/* Just break out of the switch statement for everything else. */
+			default :
+				break;
+		}
+	}
 }
 
 //run the Class init on init
 add_action( 'init', array( 'SPClass', 'init' ) );
-
-function class_columns( $columns ) {
-	$columns = array(
-		'cb' => true,
-		'title' => __( 'Class' ),
-		'author' => __( 'Teacher' ),
-		'department' => __( 'Department' )
-	);
-	return $columns;
-}
-add_filter( 'manage_edit-class_columns', 'class_columns' ) ;
-
-function manage_class_columns( $column, $post_id ) {
-	global $post;
-	switch( $column ) {
-		case 'department' :
-			/* Get the post departments. */
-			$departments = get_the_terms( $post_id, 'department' );
-			foreach($departments as $department) {
-				$department_links[] = $department->name;
-			}
-			echo join( ", ", $department_links );
-			break;
-			
-		/* Just break out of the switch statement for everything else. */
-		default :
-			break;
-	}
-}
-add_action( 'manage_class_posts_custom_column', 'manage_class_columns', 10, 2 );
