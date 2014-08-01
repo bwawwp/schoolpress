@@ -346,8 +346,9 @@ class SPClass {
 		//hooks
 		add_action('before_delete_post', array('SPClass', 'before_delete_post'));
 		add_action('user_register', array('SPClass', 'user_register_classes'));		
-		add_filter( 'manage_edit-class_columns', array('SPClass', 'class_columns')) ;
-		add_action( 'manage_class_posts_custom_column', array('SPClass', 'manage_class_columns'), 10, 2 );
+		add_filter('manage_edit-class_columns', array('SPClass', 'class_columns')) ;
+		add_action('manage_class_posts_custom_column', array('SPClass', 'manage_class_columns'), 10, 2);
+		add_filter('pre_get_posts', array('SPClass', 'pre_get_posts'), 20);
 	
 		//assignment CPT
 		$labels = array(
@@ -537,6 +538,34 @@ class SPClass {
 			default :
 				break;
 		}
+	}
+	
+	/*
+		Filter classes off of homepage and search based on visibility taxonomy.
+	*/
+	static function pre_get_posts($query)
+	{
+		//make sure we're in the frontend
+		if(!is_admin())
+		{			
+			//make sure it's a class query
+			if(!empty($query->query_vars['post_type']) && ($query->query_vars['post_type'] == 'class' || (is_array($query->query_vars['post_type']) && in_array('class', $query->query_vars['post_type']))))
+			{				
+				//on homepage, filter for homepage
+				if(is_front_page())
+				{
+					$query->set('tax_query', array(array('taxonomy'=>'visibility', 'field'=>'slug', 'terms'=>array('homepage'))));
+				}
+				
+				//in search, filter for search
+				if(!empty($_REQUEST['s']))
+				{					
+					$query->set('tax_query', array(array('taxonomy'=>'visibility', 'field'=>'slug', 'terms'=>array('search'))));
+				}
+			}
+		}
+		
+		return $query;
 	}
 }
 

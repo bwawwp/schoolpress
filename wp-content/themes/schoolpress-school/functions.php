@@ -38,10 +38,18 @@ add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
 
 //show classes in searches
 function add_my_post_types_to_query( $query ) {
+	//ignore dashboard
+	if(is_admin())
+		return $query;
+	
+	//checks
 	if ( is_home() && $query->is_main_query() )
 		$query->set( 'post_type', array( 'class' ) );
 	elseif ( is_author() && $query->is_main_query() )
 		$query->set( 'post_type', array( 'class' ) );
+	elseif(!empty($_REQUEST['s']))
+		$query->set( 'post_type', array( 'class' ) );
+		
 	return $query;
 }
 
