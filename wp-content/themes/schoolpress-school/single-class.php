@@ -45,7 +45,10 @@ if(!empty($_REQUEST['enroll']))
 				<?php } else { ?>
 				<div class="column three_fourths">					
 					<?php do_action( 'sb_page_title' ); ?>
-					<p>By <?php the_author(); ?> | <i class="fa fa-graduation-cap"></i> <?php echo count($class->students) . " " . _n("Student", "Students", count($class->students));?></p>
+					<p>
+						By <?php the_author(); ?> | <i class="fa fa-graduation-cap"></i> <?php echo count($class->students) . " " . _n("Student", "Students", count($class->students));?>
+						<?php if($class->isTeacher()) { ?> | <a href="/start-a-class/?edit=<?php echo $class->id;?>">Edit</a><?php } ?>
+					</p>
 					<hr />
 					<?php the_content(); ?>
 					<hr />

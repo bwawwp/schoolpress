@@ -111,3 +111,6 @@ ul.media-list {margin-left: 0; }
 @media (min-width:1200px){
 	#header, #container, .layout-two-col-right div#container, #footer {width: 1170px; }
 }
+
+/* Delete links */
+a.link-delete, a.link-cancel, a.link-delete:visited, a.link-cancel:visited {color:#a94442}

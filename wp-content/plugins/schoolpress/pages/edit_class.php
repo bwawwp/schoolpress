@@ -21,8 +21,10 @@
 				}
 				
 				//adding a class?
-				if(!empty($_POST['editclass']))
+				if(!empty($_POST['edit']))
 				{					
+					$edit = intval($_POST['edit']);
+					
 					//get values
 					$class_name = $_REQUEST['class_name'];
 					$class_description = $_REQUEST['class_description'];
@@ -38,18 +40,58 @@
 					else
 					{					
 						//adding or updating?
-						
-						//add class
-						$class = new SPCLass(array('name'=>$class_name, 'description'=>$class_description, 'department'=>$class_department, 'semester'=>$class_semester, 'enrollment'=>$class_enrollment));
-												
-						if(!empty($class))
-						{
-							//redirect to the class page
-							wp_redirect(get_permalink($class->id));
-							exit;
+						if($edit == -1)
+						{						
+							//woah, let's make sure they are a teacher
+							if(!pmpro_hasMembershipLevel(2,3))
+								die("You do not have permission to do this.");
+							
+							//add class
+							$class = new SPCLass(array('name'=>$class_name, 'description'=>$class_description, 'department'=>$class_department, 'semester'=>$class_semester, 'enrollment'=>$class_enrollment));
+													
+							if(!empty($class))
+							{
+								//redirect to the class page
+								wp_redirect(get_permalink($class->id));
+								exit;
+							}
+							else
+								sp_setMessage("Error adding class.", "error");
 						}
 						else
-							sp_setMessage("Error adding class.", "error");
+						{							
+							//update class							
+							$class = new SPClass($edit);
+						
+							//let's make sure they can edit this class
+							if(!$class->isTeacher() && !current_user_can("manage_options"))
+								die("You do not have permission to do this.");
+								
+							//okay update
+							if(!empty($class) && $class->editClass($class_name, $class_description, $class_department, $class_semester, $class_enrollment))
+							{
+								sp_setMessage("Class updated successfully.", "success");
+							}
+							else
+							{
+								sp_setMessage("Error updating class.", "error");
+							}
+						}
+					}
+				}
+				
+				//deleting a class?
+				if(!empty($_REQUEST['delete']))
+				{
+					$class_id = intval($_REQUEST['delete']);
+					$class = new SPClass($class_id);
+					
+					//only teachers and admins can delete classes
+					if($class->isTeacher() || current_user_can("manage_options"))
+					{
+						$r = wp_delete_post($class->post->ID);
+						wp_redirect(home_url("/my-classes/"));
+						exit;
 					}
 				}
 			}
@@ -63,16 +105,20 @@
 	function sp_edit_class_shortcode($atts, $content=null, $code="")
 	{
 		//get values
-		if(!empty($_POST['editclass']))
+		if(!empty($_POST['edit']))
 		{
+			$edit = intval($_POST['edit']);
+			
 			$class_name = $_REQUEST['class_name'];
 			$class_description = $_REQUEST['class_description'];
 			$class_department = $_REQUEST['class_department'];
 			$class_semester = $_REQUEST['class_semester'];
 			$class_enrollment = $_REQUEST['class_enrollment'];
 		}
-		elseif(!empty($_REQUEST['edit']))
+		elseif(!empty($_REQUEST['edit']) && intval($_REQUEST['edit']) > 0)
 		{
+			$edit = intval($_REQUEST['edit']);
+			
 			$class = new SPClass(intval($_REQUEST['edit']));
 						
 			if(!empty($class))
@@ -94,6 +140,7 @@
 		}
 		else
 		{
+			$edit = -1;
 			$class_name = "";
 			$class_description = "";
 			$class_department = "";
@@ -155,8 +202,24 @@
 				</div>
 			</div>
 			<p class="text-center">
-				<input type="hidden" name="editclass" value="1" />
+				<input type="hidden" name="edit" value="<?php echo $edit;?>" />
 				<button type="submit" class="btn btn-default">Submit</button>
+				
+				<?php
+					//delete or cancel
+					if(!empty($class))
+					{
+					?>
+					<a class="link-delete" href="javascript:askfirst('Are you sure you want to delete this class?', '<?php echo home_url('/start-a-class/?delete=' . $class->id);?>');">Delete</a>
+					<?php
+					}
+					else
+					{
+					?>
+					<a class="link-cancel" href="<?php echo home_url();?>">Cancel</a>
+					<?php
+					}
+				?>
 			</p>
 		</form>
 		<?php

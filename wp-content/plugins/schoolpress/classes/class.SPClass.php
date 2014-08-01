@@ -39,8 +39,10 @@ class SPClass {
 		if ( !empty( $this->post ) ) {
 			$this->id = $this->post->ID;
 			$this->post_id = $this->post->ID;
+			$this->name = $this->post->post_title;
 			$this->title = $this->post->post_title;
 			$this->teacher_id = $this->post->post_author;
+			$this->description = $this->post->post_content;
 			$this->content = $this->post->post_content;
 			
 			//get taxonomies
@@ -132,6 +134,57 @@ class SPClass {
 		$this->getGroup();
 		
 		return $class_post_id;
+	}
+	
+	//edit a class
+	function editClass($name, $description, $department, $semester, $enrollment)
+	{		
+		//make sure we have an id
+		if(empty($this->id))
+			return false;
+	
+		//make sure we have values
+		if(empty($name))
+			return false;
+		
+		//update BuddyPress Group
+		$group = array(
+			'ID' => $this->group_id,
+			'post_title' => $name,
+			'post_name' => sanitize_title($name),
+			'post_content' => $description		
+		);
+		wp_update_post($group);
+		
+		//update the forum		
+		$forum = array(
+			'ID' => $this->forum_id,
+			'post_title' => $name,
+			'post_name' => sanitize_title($name),
+			'post_content' => $description,	
+		);
+		wp_update_post($forum);
+		
+		//update post
+		$post = array(
+			'ID' => $this->post_id,
+			'post_title' => $name,
+			'post_content' => $description,
+			'post_name' => sanitize_title($name),			
+			);
+		wp_update_post($post);
+		
+		//add taxonomies
+		wp_set_object_terms($this->post_id, intval($department), "department");
+		wp_set_object_terms($this->post_id, intval($semester), "semester");
+		
+		//add meta fields to class
+		update_post_meta($this->post_id, "class_enrollment", $enrollment);
+				
+		$this->getPost($this->post_id);
+		$this->getGroup();
+		
+		return $this->id;
 	}
 	
 	//get associated group
