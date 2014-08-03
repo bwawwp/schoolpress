@@ -15,8 +15,9 @@ h1, h2, h3, h4, h5 {font-family: 'Open Sans', sans-serif; font-weight: 300; }
 h1.page-title {padding: 0 0 20px 0; border-bottom: 1px solid #DEDEDE; margin: 0 0 40px 0; }
 a {color: #108a93; }
 a:hover {color: #35b2bb; }
-a:visited { }
+a:visited {color: #108a93; }
 .btn-info:visited {color: #FFF; }
+.label a, .label a:visited {color: #FFF; }
 
 #wrap, #footer_wrap {
 	width: 100%; 
@@ -48,8 +49,9 @@ a:visited { }
 .page-login .nav, .page-lostpassword .nav {display: none; }
 
 #footer, #footer a {color: #FFF; }
+#footer a {text-decoration: underline; }
 
-.divider {margin: 30px 0; }
+.divider {margin: 50px 0; }
 .clear {clear: both; }
 span.label-block {display: block; text-align: left; }
 
@@ -67,8 +69,9 @@ span.label-block {display: block; text-align: left; }
 .entry-content .login p.message {background-color: #fcf8e3;color: #8a6d3b;margin: .5em 0;padding: 10px 15px;font-size: 14px;font-weight: 400;line-height: 1.5em;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;border: 1px solid #faebcc;}
 
 /* Paid Memberships Pro Styles */
-.pmpro_btn, .pmpro_btn:link, .login input[type=submit], .button, .button:active {background: #563d7c; color: #FFF; font-weight: 400; border: none; padding: 6px 12px; border-radius: 4px; font-size: 14px; line-height: 1.42857143; box-shadow: none; margin: 0; text-shadow: none; }
-.pmpro_btn:hover, .login input[type=submit]:hover, .button:hover {background: #522990; box-shadow: none; }
+.pmpro_btn, .pmpro_btn:link, .login input[type=submit], .button, .button:active {background: #563d7c; color: #FFF; font-weight: 400; border: none; padding: 6px 12px; border-radius: 4px; font-size: 14px; line-height: 1.42857143; box-shadow: none; margin: 0; text-shadow: none; font-family: 'Open Sans', sans-serif;  }
+.pmpro_btn:hover, .login input[type=submit]:hover, .button:hover {background: #522990; box-shadow: none; color: #fff; }
+.pmpro_btn:visited {color: #FFF; }
 
 .pmpro-levels .page {text-align: center; }
 .pmpro-levels h1.page-title { }
@@ -79,6 +82,7 @@ span.label-block {display: block; text-align: left; }
 /* SchoolPress Classes */
 .home-page .class, .type-page .class, .search .class {border-top: 1px solid #ddd; padding: 1em 0; margin: 1.2em 0; }
 .class .entry-photo {float: left; margin: 0 18px 18px 0; }
+.class .entry-meta {margin-bottom: 5px; }
 .class h2.entry-title {clear: none; }
 .class .alt_wrap .post-thumbnail {float: right; }
 #bbpress-forums .bbp-pagination {width: auto; }
@@ -99,6 +103,14 @@ ul.media-list {margin-left: 0; }
 }
 .widget .widget-title {font-family: 'Sanchez', 'Garamond', serif; color: #563d7c; font-size: 20px; margin: 0 0 .5em 0; border: none; padding: 0; }
 
+.widget ul {border: none; }
+.widget li {list-style: disc; color: #AAA; margin: 3px 0 3px 25px; }
+.widget li a {border: none; padding: 0; }
+.widget li a:hover, .widget li a:active {
+    background:none;
+    color: inherit;
+	text-decoration: none;
+}
 
 @media (min-width:768px){
 	#header, #container, .layout-two-col-right div#container, #footer {width: 750px; }

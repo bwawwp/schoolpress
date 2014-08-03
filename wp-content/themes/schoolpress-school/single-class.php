@@ -46,7 +46,7 @@ if(!empty($_REQUEST['enroll']))
 				<div class="column three_fourths">					
 					<?php do_action( 'sb_page_title' ); ?>
 					<p>
-						By <?php the_author(); ?> | <i class="fa fa-graduation-cap"></i> <?php echo count($class->students) . " " . _n("Student", "Students", count($class->students));?>
+						By <?php the_author(); ?> | <?php echo count($class->students) . " " . _n("Student", "Students", count($class->students));?>
 						<?php if($class->isTeacher()) { ?> | <a href="/start-a-class/?edit=<?php echo $class->id;?>">Edit</a><?php } ?>
 					</p>
 					<hr />
@@ -58,7 +58,7 @@ if(!empty($_REQUEST['enroll']))
 							echo '<div class="column one_half">';
 							$department_links = array();					
 							foreach ( $departments as $department ) {
-								$department_links[] = '<span class="label label-default">' . $department->name . '</span>';
+								$department_links[] = '<span class="label label-default"><a href="/departments/' . $department->slug . '/">' . $department->name . '</a></span>';
 							}
 							echo 'Department: ' . join( ", ", $department_links );
 							echo '</div>';
@@ -94,7 +94,7 @@ if(!empty($_REQUEST['enroll']))
 							else
 							{
 								//default
-								$class->getAssignments(); 
+								$class->getAssignments();								
 								if(!empty($class->assignments))
 								{
 									?>
@@ -105,12 +105,12 @@ if(!empty($_REQUEST['enroll']))
 												<th>Name</th>
 												<th>Due</th>
 												<th width="20%">Status</th>
-												<th>Action</th>
+												<th></th>
 											</tr>
 										</thead>
 										<tbody>
 										<?php
-											foreach($class->assignments as $class->assignment)
+											foreach($class->assignments as $assignment)
 											{
 												?>
 												<tr>
@@ -128,7 +128,12 @@ if(!empty($_REQUEST['enroll']))
 														<span class="label label-danger"><i class="glyphicon glyphicon-ban-circle"></i> Submitted</span>
 													*/ ?>
 													</td>
-													<td><a href="<?php echo get_permalink($assignment->ID); ?>">View Assignment</a></td>
+													<td>
+														<a href="<?php echo get_permalink($assignment->ID); ?>">View Assignment</a>
+														<?php if($class->isTeacher()) { ?>
+															| <a href="/edit-assignment/?edit=<?php echo $assignment->ID;?>">Edit</a>
+														<?php } ?>
+													</td>
 												</tr>
 												<?php
 											}

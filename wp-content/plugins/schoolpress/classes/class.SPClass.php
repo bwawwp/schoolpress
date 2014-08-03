@@ -374,14 +374,14 @@ class SPClass {
 		if ( !empty( $this->assignments ) && !$force )
 			return $this->assignments;
 
-		//okay get submissions
+		//okay get assignments
 		$this->assignments = get_children( array(
 				'post_parent' => $this->id,
 				'post_type' => 'assignment',
 				'post_status' => 'published'
 			) );
 
-		//make sure submissions is an array at least
+		//make sure assignments is an array at least
 		if ( empty( $this->assignments ) )
 			$this->assignments = array();
 
@@ -395,13 +395,22 @@ class SPClass {
 		{
 			wp_mail('jason+test1@strangerstudios.com', 'Testing... ' . time(), 'Testing...' . time());
 		}	
-		
-		//hooks
-		add_action('before_delete_post', array('SPClass', 'before_delete_post'));
+				
+		/*
+			Hooks and filters.
+		*/
+		//enroll in invited classes when registering
 		add_action('user_register', array('SPClass', 'user_register_classes'));		
+		
+		//cleanup on delete
+		add_action('before_delete_post', array('SPClass', 'before_delete_post'));
+		
+		//CTP columns
 		add_filter('manage_edit-class_columns', array('SPClass', 'class_columns')) ;
 		add_action('manage_class_posts_custom_column', array('SPClass', 'manage_class_columns'), 10, 2);
-		add_filter('pre_get_posts', array('SPClass', 'pre_get_posts'), 20);
+		
+		//search filters
+		add_filter('pre_get_posts', array('SPClass', 'pre_get_posts'), 20);				
 	
 		//assignment CPT
 		$labels = array(
@@ -482,6 +491,7 @@ class SPClass {
 				
 		if(empty($visibilities) && false)
 		{
+			wp_insert_term( 'browse', 'visibility');
 			wp_insert_term( 'homepage', 'visibility');
 			wp_insert_term( 'search', 'visibility');
 		}
@@ -615,11 +625,18 @@ class SPClass {
 				{					
 					$query->set('tax_query', array(array('taxonomy'=>'visibility', 'field'=>'slug', 'terms'=>array('search'))));
 				}
+				
+				//archive/browse view, filter for browse
+				if(!empty($query->query_vars['department']))
+				{
+					$query->set('tax_query', array(array('taxonomy'=>'visibility', 'field'=>'slug', 'terms'=>array('browse'))));
+				}
+			
 			}
 		}
 		
 		return $query;
-	}
+	}		
 }
 
 //run the Class init on init

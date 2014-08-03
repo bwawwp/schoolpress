@@ -36,6 +36,10 @@ add_filter('widget_text', 'do_shortcode');
 //Show posts of 'classes' post types on home page
 add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
 
+if ( function_exists( 'add_image_size' ) ) { 
+	add_image_size( 'class-thumb', 100, 150, false );
+}
+
 //show classes in searches
 function add_my_post_types_to_query( $query ) {
 	//ignore dashboard
@@ -48,6 +52,8 @@ function add_my_post_types_to_query( $query ) {
 	elseif ( is_author() && $query->is_main_query() )
 		$query->set( 'post_type', array( 'class' ) );
 	elseif(!empty($_REQUEST['s']))
+		$query->set( 'post_type', array( 'class' ) );
+	elseif(!empty($query->query_vars['department']))
 		$query->set( 'post_type', array( 'class' ) );
 		
 	return $query;

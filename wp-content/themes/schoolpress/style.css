@@ -15,6 +15,9 @@ h1, h2, h3, h4, h5 {font-family: 'Open Sans', sans-serif; font-weight: 300; }
 h1.page-title {padding: 0 0 20px 0; border-bottom: 1px solid #DEDEDE; margin: 50px 0 40px 0; }
 a {color: #108a93; }
 a:hover {color: #35b2bb; }
+a:visited {color: #108a93; }
+.btn-info:visited {color: #FFF; }
+.label a, .label a:visited {color: #FFF; }
 
 #wrap, #footer_wrap {
 	width: 100%; 
@@ -44,8 +47,9 @@ a:hover {color: #35b2bb; }
 .page-login .nav, .page-lostpassword .nav {display: none; }
 
 #footer, #footer a {color: #FFF; }
+#footer a {text-decoration: underline; }
 
-.divider {margin: 30px 0; }
+.divider {margin: 50px 0; }
 .alt_wrap {background: #FAFAFA; padding: 50px 0; border-top: 1px solid #FFF; border-bottom: 1px solid #FFF;}
 .alt2_wrap {background: #563d7c; padding: 50px 0; border-top: 1px solid #FFF; color: #FFF; }
 .wrap {padding: 50px 0; border-top: 1px solid #EEE; border-bottom: 1px solid #EEE; }
@@ -69,8 +73,9 @@ a:hover {color: #35b2bb; }
 .entry-content .login p.message {background-color: #fcf8e3;color: #8a6d3b;margin: .5em 0;padding: 10px 15px;font-size: 14px;font-weight: 400;line-height: 1.5em;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;border: 1px solid #faebcc;}
 
 /* Paid Memberships Pro Styles */
-.pmpro_btn, .pmpro_btn:link, .login input[type=submit] {background: #563d7c; color: #FFF; font-weight: 400; border: none; padding: 6px 12px; border-radius: 4px; font-size: 14px; line-height: 1.42857143; }
-.pmpro_btn:hover, .login input[type=submit]:hover {background: #522990;  }
+.pmpro_btn, .pmpro_btn:link, .login input[type=submit], .button, .button:active {background: #563d7c; color: #FFF; font-weight: 400; border: none; padding: 6px 12px; border-radius: 4px; font-size: 14px; line-height: 1.42857143; box-shadow: none; margin: 0; text-shadow: none; font-family: 'Open Sans', sans-serif;  }
+.pmpro_btn:hover, .login input[type=submit]:hover, .button:hover {background: #522990; box-shadow: none; color: #fff; }
+.pmpro_btn-disabled, .pmpro_btn-disabled:link {background: #DDD; }
 .pmpro_btn:visited {color: #FFF; }
 
 .pmpro-levels .page {text-align: center; }
@@ -78,6 +83,7 @@ a:hover {color: #35b2bb; }
 .pmpro_level {text-align: center; }
 .pmpro_level h2 {color: #563d7c; font-size: 40px; font-weight: 300; }
 .pmpro_level .pmpro_btn {display: block; margin: 0 25%; }
+.pmpro_level-description {margin: 0 10%; }
 
 .entry-content .pmpro_checkout {margin-bottom: 1em; border: none; }
 .entry-content .pmpro_checkout th, .entry-content .pmpro_checkout td {padding-left: 0; padding-right: 0; }

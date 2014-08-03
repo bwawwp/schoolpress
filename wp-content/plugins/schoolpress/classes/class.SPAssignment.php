@@ -39,8 +39,14 @@ class SPAssignment {
 			return false;
 	}
 	
-	//register CPT and Taxonomies on init
+	//register CPT and Taxonomies on init, setup hooks
 	function init() {
+		/*
+			Hooks and filters.
+		*/
+		//update things when the post is saved in admin
+		add_action('save_post', array('SPAssignment', 'save_post'), 20);
+		
 		//assignment CPT
 		$labels = array(
 			'name'               => 'Assignments',
@@ -103,6 +109,33 @@ class SPAssignment {
 		return $this->submissions;
 	}
 	
+	/*
+		Do some stuff when an Assignment CPT is saved in the admin.
+	*/
+	function save_post($post_id)
+	{
+		//only worried about our CPT
+		if(get_post_type($post_id) != 'assignment')
+			return;
+
+		//get post to work with
+		$post = get_post($post_id);
+			
+		//update post_parent to match the class_id if set.
+		$class_id = get_post_meta($post_id, "class_id", true);				
+		if(!empty($class_id))
+		{
+			//already set?
+			if($post->post_parent != $class_id)
+				wp_update_post(array("ID"=>$post_id, "post_parent"=>$class_id));
+		}
+		else
+		{
+			//already empty?
+			if(!empty($post->post_parent))		
+				wp_update_post(array("ID"=>$post_id, "post_parent"=>0));
+		}
+	}
 }
 
 //run the Assignment init on init

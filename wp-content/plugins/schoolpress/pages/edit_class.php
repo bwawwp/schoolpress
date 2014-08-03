@@ -24,13 +24,16 @@
 				if(!empty($_POST['edit']))
 				{					
 					$edit = intval($_POST['edit']);
-					
+										
 					//get values
 					$class_name = $_REQUEST['class_name'];
 					$class_description = $_REQUEST['class_description'];
 					$class_department = $_REQUEST['class_department'];
 					$class_semester = $_REQUEST['class_semester'];
-					$class_enrollment = $_REQUEST['class_enrollment'];
+					if(!empty($_REQUEST['class_enrollment']))
+						$class_enrollment = $_REQUEST['class_enrollment'];
+					else
+						$class_enrollment = "";
 					
 					//check values
 					if(empty($class_name) || empty($class_description) || empty($class_department) || empty($class_semester))
@@ -113,7 +116,10 @@
 			$class_description = $_REQUEST['class_description'];
 			$class_department = $_REQUEST['class_department'];
 			$class_semester = $_REQUEST['class_semester'];
-			$class_enrollment = $_REQUEST['class_enrollment'];
+			if(!empty($_REQUEST['class_enrollment']))
+				$class_enrollment = $_REQUEST['class_enrollment'];
+			else
+				$class_enrollment = "";
 		}
 		elseif(!empty($_REQUEST['edit']) && intval($_REQUEST['edit']) > 0)
 		{
@@ -203,20 +209,20 @@
 			</div>
 			<p class="text-center">
 				<input type="hidden" name="edit" value="<?php echo $edit;?>" />
-				<button type="submit" class="btn btn-default">Submit</button>
+				<button type="submit" class="pmpro_btn">Submit</button>
 				
 				<?php
 					//delete or cancel
 					if(!empty($class))
 					{
 					?>
-					<a class="link-delete" href="javascript:askfirst('Are you sure you want to delete this class?', '<?php echo home_url('/start-a-class/?delete=' . $class->id);?>');">Delete</a>
+					<a class="btn btn-link" href="javascript:askfirst('Are you sure you want to delete this class?', '<?php echo home_url('/start-a-class/?delete=' . $class->id);?>');">Delete</a>
 					<?php
 					}
 					else
 					{
 					?>
-					<a class="link-cancel" href="<?php echo home_url();?>">Cancel</a>
+					<a class="btn btn-link" href="<?php echo home_url();?>">Cancel</a>
 					<?php
 					}
 				?>

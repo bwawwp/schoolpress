@@ -6,8 +6,10 @@
 	<div class="entry-header">
 		<?php if ( has_post_thumbnail() ) { ?>
 			<a class="entry-photo" href="<?php the_permalink() ?>" rel="bookmark" title="<?php echo esc_attr( get_the_title() ); ?>">
-				<?php echo get_the_post_thumbnail( $post->ID, 'thumbnail' ); ?>
+				<?php echo get_the_post_thumbnail( $post->ID, 'class-thumb' ); ?>
 			</a>
+		<?php } else { ?>
+			<a class="entry-photo" href="<?php the_permalink() ?>" rel="bookmark" title="<?php echo esc_attr( get_the_title() ); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/class-thumb_sp.png" width="100" height="100" border="0" alt="<?php echo esc_attr( get_the_title() ); ?>" /></a>
 		<?php } ?>
 		<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf(__('Permalink to %s', 'startbox'), esc_html(get_the_title(), 1)) ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 		<div class="entry-meta">
@@ -20,11 +22,15 @@
 
 	<div class="entry-content">
 		<?php
-			if (
+			if(is_page('my-classes')) {
+				//don't show description here
+			}
+			elseif (
 				( ( is_home() || is_front_page() ) && sb_get_option( 'home_post_content' ) == 'full' ) OR 		// If we're on the homepage and should display full content
 				( ( !is_home() || !is_front_page() ) && sb_get_option( 'archive_post_content' ) == 'full' ) ) {	// Or, If were on an archive page and should display full content
-					the_content( apply_filters( "sb_read_more", sprintf( __("Continue Reading: %s &rarr;", "startbox"), get_the_title() ) ) ); 				// Display the full content using a filterable read-more tag when necessary
-				}
+					// Display the full content using a filterable read-more tag when necessary					
+					the_content( apply_filters( "sb_read_more", sprintf( __("Continue Reading: %s &rarr;", "startbox"), get_the_title() ) ) );
+			}			
 			else { // Otherwise, display the excerpt with a fliterable read-more tag
 				the_excerpt(); echo '<a href="' . get_permalink() . '" title="' . sprintf(__("Continue Reading: %s", "startbox"), esc_html(get_the_title(), 1)) . '" class="more-link">' . do_shortcode( apply_filters( "sb_read_more", sprintf( __("Continue Reading: %s &rarr;", "startbox"), get_the_title() ) ) ) . '</a>';
 			}

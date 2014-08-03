@@ -19,19 +19,26 @@ if($pmpro_msg)
 		  else
 			  $current_level = false;
 		?>
-		<div id="pmpro_level-<?php echo $level->id; ?>" class="column one_third pmpro_level<?php if($current_level == $level) { ?> pmpro_level-active<?php } if($level->id == '3') { ?> last<?php } ?>">
+		<div id="pmpro_level-<?php echo $level->id; ?>" class="column one_half pmpro_level<?php if($current_level == $level) { ?> pmpro_level-active<?php } if($level->id == '2') { ?> last<?php } ?>">
 			<h2><?php echo $level->name; ?></h2>
 			<p class="pmpro_level-price">						
-				<?php 
+				<?php  /*
 					if(pmpro_isLevelFree($level)) 
 						echo 'Free';
 					else 
 					{ 
 						global $pmpro_currency_symbol;
 						echo $pmpro_currency_symbol . intval($level->initial_payment);
-					}				
+					}	
+					*/			
 				?>
 			</p> <!-- end pmpro_level-price -->		
+			<div class="pmpro_level-description">
+			<?php 
+				if(!empty($level->description))
+					echo apply_filters("the_content", stripslashes($level->description));
+			?>	
+			</div>
 			<div class="pmpro_level-select">
 			<?php if(empty($current_user->membership_level->ID)) { ?>
 				<a class="pmpro_btn" href="<?php echo pmpro_url("checkout", "?level=" . $level->id, "https")?>"><?php _e('Select', 'Choose a level from levels page', 'pmpro');?></a>               

@@ -9,13 +9,13 @@ Author: Jason Coleman, Brian Mesenlehner
 
 //version constant
 define("SP_VERSION", ".6");
+define("PMPRO_NETWORK_MANAGE_SITES_SLUG", "manage-sites");
 
 /*
 	Includes
 */
 define("SP_DIR", dirname(__FILE__));
 require_once(SP_DIR . "/includes/functions.php");			//misc functions used by the plugin
-
 require_once(SP_DIR . "/scheduled/crons.php");				//crons for expiring members, sending expiration emails, etc
 
 //Loading Classes
