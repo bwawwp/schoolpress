@@ -1,7 +1,7 @@
 SchoolPress
 ===========
 
-Future Home of the Open Sourced Code for SchoolPress.me. We are finishing up the project and compiling pieces of the app to publish open source here on GitHub. Please stay tuned.
+Home of the Open Sourced Code for [SchoolPress.me](http://schoolpress.me).
 
 Description
 ---------------------
@@ -10,3 +10,18 @@ SchoolPress is the example app referenced in the book [Building Web Apps with Wo
 
 The app will allow teachers and professors to create classes where they can create assignments and discussions for their students.
 
+Some notes about the code in this repository:
+
+1. All of the SchoolPress code here is released under the GPLv2 license unless otherwise noted in a plugin or theme folder. 
+1. This code is for demonstration purposes only. We are not responsible for any bugs in the code or anything that happens to a site or business attempting to use this code.
+1. While this repository contains ALL OF THE CODE for the schoolpress.me site, getting a site like schoolpress.me setup using this codebase is not trivial. The Getting Started Guide will help you with this.
+1. If you find this code useful, consider contributing by doing a pull request against the code or documentation. Thanks.
+
+Documentation
+---------------------
+
+Documentation will be stored in the /docs/ folder of this repository.
+
+* Getting Started
+* Getting Involved
+* FAQ
