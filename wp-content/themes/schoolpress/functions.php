@@ -3,6 +3,9 @@
 global $pmpro_network_non_site_levels;
 $pmpro_network_non_site_levels = array(1,2);
 
+/*
+	This code was used to lock down the site when in closed alpha.
+*/
 function my_template_redirect()
 {
 	global $current_user;
@@ -23,7 +26,7 @@ function my_template_redirect()
 		wp_redirect(wp_login_url());
 	}
 }
-add_action('template_redirect', 'my_template_redirect');
+//add_action('template_redirect', 'my_template_redirect');
 
 //enqueue stylesheets and scripts
 function startbox_child_init()

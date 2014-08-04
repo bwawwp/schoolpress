@@ -269,7 +269,7 @@ class SPAssignment {
 		global $post;
 		
 		//only worried about our CPT
-		if(get_post_type($post->ID) != 'assignment')
+		if(empty($post) || get_post_type($post->ID) != 'assignment')
 			return;
 			
 		//check that current user is a class member
