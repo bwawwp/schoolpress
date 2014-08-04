@@ -73,6 +73,21 @@ class SPClass {
 			return false;
 	}
 	
+	/*
+		Get a class by Forum ID
+	*/
+	function getClassByForumID($forum_id)
+	{
+		global $wpdb;
+		
+		$class_id = $wpdb->get_var("SELECT post_id FROM $wpdb->postmeta WHERE meta_key = 'forum_id' AND meta_value = '" . $forum_id . "' LIMIT 1");
+		
+		if(!empty($class_id))
+			$this->getPost($class_id);
+		else
+			return false;
+	}
+	
 	//add a new class
 	function addClass($name, $description, $department, $semester, $enrollment, $user_id = NULL)
 	{		
@@ -412,6 +427,9 @@ class SPClass {
 		//search filters
 		add_filter('pre_get_posts', array('SPClass', 'pre_get_posts'), 20);				
 	
+		//protect class forums
+		add_filter('template_redirect', array('SPClass', 'template_redirect'));
+	
 		//assignment CPT
 		$labels = array(
 			'name'               => 'Classes',
@@ -646,7 +664,32 @@ class SPClass {
 		}
 		
 		return $query;
-	}		
+	}	
+
+	/*
+		Protect class forums.
+	*/
+	static function template_redirect()
+	{		
+		if(!function_exists('bbp_get_forum_id'))
+			return;
+		
+		$forum_id = bbp_get_forum_id();
+		
+		// Is this even a forum page at all?
+		if( ! bbp_is_forum_archive() && ! empty( $forum_id ) && pmpro_bbp_is_forum() ) {
+			//is there a class for this forum?
+			$class = new SPClass();
+			$class->getClassByForumID($forum_id);
+			
+			//class? make sure the current user is a member
+			if(!empty($class->id) && !$class->isMember())
+			{
+				wp_redirect(get_permalink($class->id));
+				exit;
+			}
+		}
+	}
 }
 
 //run the Class init on init

@@ -52,3 +52,45 @@ function sp_convertEmailStringToArray($emails)
 	
 	return $remails;
 }
+
+/**
+ * From PMPro bbPress: https://github.com/strangerstudios/pmpro-bbpress/blob/master/pmpro-bbpress.php#L122
+ * Function to tell if the current forum, topic, or reply is a subpost of the forum_id passed.
+ * If no forum_id is passed, it will return true if it is any forum, topic, or reply.
+ */
+if(!function_exists('pmpro_bbp_is_forum'))
+{
+	function pmpro_bbp_is_forum( $forum_id = NULL ) {
+		global $post;
+
+		if(bbp_is_forum($post->ID))
+		{		
+			if(!empty($forum_id) && $post->ID == $forum_id)
+				return true;
+			elseif(empty($forum_id))
+				return true;
+			else
+				return false;
+		}
+		elseif(bbp_is_topic($post->ID))
+		{		
+			if(!empty($forum_id) && $post->post_parent == $forum_id)
+				return true;
+			elseif(empty($forum_id))
+				return true;
+			else
+				return false;
+		}
+		elseif(bbp_is_reply($post->ID))
+		{		
+			if(!empty($forum_id) && in_array($forum_id, $post->ancestors))
+				return true;
+			elseif(empty($forum_id))
+				return true;
+			else
+				return false;
+		}
+		else
+			return false;
+	}
+}

@@ -145,6 +145,9 @@ class SPAssignment {
 		//update things when the post is saved in admin
 		add_action('save_post', array('SPAssignment', 'save_post'), 20);
 		
+		//protect assignments for class members
+		add_filter('template_redirect', array('SPAssignment', 'template_redirect'));
+		
 		//assignment CPT
 		$labels = array(
 			'name'               => 'Assignments',
@@ -255,6 +258,31 @@ class SPAssignment {
 			//already empty?
 			if(!empty($post->post_parent))		
 				wp_update_post(array("ID"=>$post_id, "post_parent"=>0));
+		}
+	}
+	
+	/*
+		Only let class members view assignments.
+	*/
+	static function template_redirect()
+	{
+		global $post;
+		
+		//only worried about our CPT
+		if(get_post_type($post->ID) != 'assignment')
+			return;
+			
+		//check that current user is a class member
+		$assignment = new SPAssignment($post->ID);
+		
+		if(!empty($assignment))
+		{
+			$class = $assignment->getClass();
+			if(!$class->isMember())
+			{
+				wp_redirect(get_permalink($class->id));
+				exit;
+			}
 		}
 	}
 }

@@ -91,13 +91,15 @@ if(!empty($_REQUEST['enroll']))
 							{
 								get_template_part('class', 'invite');
 							}
-							else
+							elseif($class->isMember())
 							{
 								//default, show assignments (move into template part?)
 								?>
 								<h3>
 									Assignments
-									<a class="btn btn-info btn-xs" href="/edit-assignment/?class_id=<?php echo $class->id;?>"><i class="fa fa-plus"></i> New Assignment</a>
+									<?php if($class->isTeacher()) { ?>
+										<a class="btn btn-info btn-xs" href="/edit-assignment/?class_id=<?php echo $class->id;?>"><i class="fa fa-plus"></i> New Assignment</a>
+									<?php } ?>
 								</h3>
 								<?php
 								//get assignments								
