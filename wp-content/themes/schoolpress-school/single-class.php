@@ -93,12 +93,18 @@ if(!empty($_REQUEST['enroll']))
 							}
 							else
 							{
-								//default
+								//default, show assignments (move into template part?)
+								?>
+								<h3>
+									Assignments
+									<a class="btn btn-info btn-xs" href="/edit-assignment/?class_id=<?php echo $class->id;?>"><i class="fa fa-plus"></i> New Assignment</a>
+								</h3>
+								<?php
+								//get assignments								
 								$class->getAssignments();								
 								if(!empty($class->assignments))
 								{
-									?>
-									<h3>Assignments</h3>
+									?>									
 									<table class="assignments table table-bordered table-striped">
 										<thead>
 											<tr>

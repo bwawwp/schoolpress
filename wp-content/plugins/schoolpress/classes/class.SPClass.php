@@ -553,6 +553,16 @@ class SPClass {
 
 		//delete corresponding forum
 		wp_delete_post($this->forum_id);
+		
+		//delete assignments
+		$assignments = $this->getAssignments();
+		if(!empty($assignments))
+		{
+			foreach($assignments as $assignment)
+			{
+				wp_delete_post($assignment->id);
+			}
+		}				
 	}
 	
 	//hook

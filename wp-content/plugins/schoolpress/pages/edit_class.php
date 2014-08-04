@@ -16,7 +16,7 @@
 				//make sure user is logged in and a Teacher
 				if(!pmpro_hasMembershipLevel(array(2,3)))
 				{
-					wp_redirect('http://schoolpress.me/membership-account/membership-levels/');
+					wp_redirect('http://schoolpress.me/membership/');
 					exit;
 				}
 				
@@ -46,7 +46,7 @@
 						if($edit == -1)
 						{						
 							//woah, let's make sure they are a teacher
-							if(!pmpro_hasMembershipLevel(2,3))
+							if(!pmpro_hasMembershipLevel(array(2,3)))
 								die("You do not have permission to do this.");
 							
 							//add class
@@ -112,8 +112,8 @@
 		{
 			$edit = intval($_POST['edit']);
 			
-			$class_name = $_REQUEST['class_name'];
-			$class_description = $_REQUEST['class_description'];
+			$class_name = stripslashes($_REQUEST['class_name']);
+			$class_description = stripslashes($_REQUEST['class_description']);
 			$class_department = $_REQUEST['class_department'];
 			$class_semester = $_REQUEST['class_semester'];
 			if(!empty($_REQUEST['class_enrollment']))
@@ -167,7 +167,7 @@
 			<div class="form-group">
 				<label for="class_description" class="col-sm-2 control-label">Description</label>
 				<div class="col-sm-10">
-					<textarea class="form-control" id="class_description" name="class_description"><?php echo esc_attr($class_description); ?></textarea>
+					<textarea class="form-control" id="class_description" name="class_description"><?php echo esc_textarea($class_description); ?></textarea>
 				</div>
 			</div>
 			<div class="form-group">
@@ -219,12 +219,10 @@
 					<a class="btn btn-link" href="javascript:askfirst('Are you sure you want to delete this class?', '<?php echo home_url('/start-a-class/?delete=' . $class->id);?>');">Delete</a>
 					<?php
 					}
-					else
-					{
+					
 					?>
 					<a class="btn btn-link" href="<?php echo home_url();?>">Cancel</a>
-					<?php
-					}
+					<?php					
 				?>
 			</p>
 		</form>

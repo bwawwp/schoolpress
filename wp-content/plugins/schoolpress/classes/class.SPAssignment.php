@@ -12,8 +12,26 @@ class SPAssignment {
 	
 	//constructor can take a $post_id
 	function __construct( $post_id = NULL ) {
-		if ( !empty( $post_id ) )
+		if(!empty($post_id) && is_array($post_id))
+		{
+			//assuming we want to add a class
+			$values = $post_id;		
+			
+			return $this->addAssignment(
+				$values['title'],
+				$values['due_date'],
+				$values['required'],
+				$values['description'],
+				$values['class_id']
+			);
+		}
+		elseif(!empty( $post_id))
+		{
+			//probably the class id, get class		
 			$this->getPost( $post_id );
+			
+			return $this->id;
+		}		
 	}
 
 	//get the associated post and prepopulate some properties
@@ -23,13 +41,15 @@ class SPAssignment {
 
 		//set some properties for easy access
 		if ( !empty( $this->post ) ) {
-		$this->id = $this->post->ID;
-		$this->post_id = $this->post->ID;
-		$this->title = $this->post->post_title;
-		$this->teacher_id = $this->post->post_author;
-		$this->content = $this->post->post_content;
-		$this->required = $this->post->_schoolpress_assignment_is_required;
-		$this->due_date = $this->post->due_date;
+			$this->id = $this->post->ID;
+			$this->post_id = $this->post->ID;
+			$this->title = $this->post->post_title;
+			$this->teacher_id = $this->post->post_author;
+			$this->content = $this->post->post_content;
+			$this->description = $this->post->post_content;
+			$this->required = $this->post->required;
+			$this->due_date = $this->post->due_date;
+			$this->class_id = $this->post->post_parent;
 		}
 
 		//return post id if found or false if not
@@ -37,6 +57,84 @@ class SPAssignment {
 			return $this->id;
 		else
 			return false;
+	}
+	
+	//add a new assignment
+	function addAssignment($title, $due_date, $required, $description, $class_id, $user_id = NULL)
+	{		
+		//default to current user
+		if(empty($user_id))
+		{
+			global $current_user;
+			$user_id = $current_user->ID;
+		}
+				
+		//make sure we have values
+		if(empty($title) || empty($user_id))
+			return false;
+				
+		//add CPT post
+		$insert = array(
+			'post_title' => $title,
+			'post_content' => $description,
+			'post_name' => sanitize_title($title),
+			'post_author' => $user_id,
+			'post_parent' => $class_id,
+			'post_status' => 'publish',
+			'post_type' => 'assignment',
+			'comment_status' => 'closed',
+			'ping_status' => 'closed',			
+			);		
+		$assignment_post_id = wp_insert_post( $insert );								
+		
+		//force update the post parent, not
+		
+		//add meta fields to class
+		update_post_meta($assignment_post_id, "class_id", $class_id);
+		update_post_meta($assignment_post_id, "due_date", $due_date);
+		update_post_meta($assignment_post_id, "required", $required);
+		
+		$this->getPost($assignment_post_id);
+			
+		return $assignment_post_id;
+	}
+	
+	//edit a class
+	function editAssignment($title, $due_date, $required, $description)
+	{				
+		//make sure we have an id
+		if(empty($this->id))
+			return false;
+	
+		//make sure we have values
+		if(empty($title))
+			return false;		
+		
+		//update post
+		$post = array(
+			'ID' => $this->post_id,
+			'post_title' => $title,
+			'post_content' => $description,
+			'post_name' => sanitize_title($title),			
+			);
+		wp_update_post($post);
+				
+		//add meta fields to class
+		update_post_meta($this->post_id, "due_date", $due_date);
+		update_post_meta($this->post_id, "required", $required);
+				
+		$this->getPost($this->post_id);
+		
+		return $this->id;
+	}
+	
+	//get class
+	function getClass()
+	{
+		if(empty($this->class_id))
+			return false;
+		else
+			return new SPClass($this->class_id);
 	}
 	
 	//register CPT and Taxonomies on init, setup hooks
@@ -81,6 +179,25 @@ class SPAssignment {
 		register_post_type( 'assignment', $args );				
 	}
 	
+	//is a user the teacher who created this assignment?
+	function isTeacher($user_id = NULL)
+	{
+		//assume current user
+		if(empty($user_id))
+		{
+			global $current_user;
+			$user_id = $current_user->ID;
+		}
+		
+		if(empty($user_id))
+			return false;
+			
+		if($this->teacher_id == $user_id)
+			return true;
+		else
+			return false;
+	}
+	
 	/*
 		Get related submissions.
 		Set $force to true to force the method to get children again.
@@ -113,7 +230,11 @@ class SPAssignment {
 		Do some stuff when an Assignment CPT is saved in the admin.
 	*/
 	function save_post($post_id)
-	{
+	{		
+		//only want to do this when saving in the admin
+		if(!is_admin())
+			return;
+		
 		//only worried about our CPT
 		if(get_post_type($post_id) != 'assignment')
 			return;

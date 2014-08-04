@@ -29,6 +29,7 @@ require_once(SP_DIR . "/classes/class.SPSchool.php");		//class for School
 //Loading Page Templates
 require_once(SP_DIR . "/pages/my_classes.php");
 require_once(SP_DIR . "/pages/edit_class.php");
+require_once(SP_DIR . "/pages/edit_assignment.php");
 
 //Activation
 function sp_activation()
